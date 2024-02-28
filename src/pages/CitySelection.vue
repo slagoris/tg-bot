@@ -1,7 +1,7 @@
 <template>
     <tg-back-button @click="router.push({ name: 'home' })"/>
     <section>
-        <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg">
+        <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg" height="150">
         <h1>Выберите город</h1>
         <ul>
             <li v-for="city in cities">
