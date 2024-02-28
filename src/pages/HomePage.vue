@@ -1,5 +1,6 @@
 <template>
     <section>
+        <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg" height="100">
         <h1>Выберите язык</h1>
         <ul>
             <li v-for="lang in langs">
