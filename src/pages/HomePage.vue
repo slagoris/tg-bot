@@ -1,5 +1,5 @@
 <template>
-<!--    <tg-main-button  @click="router.back()"/>-->
+    <tg-main-button  @click="router.back()"/>
     <section>
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.png" alt="logo 7gg" width="100%">
@@ -204,13 +204,13 @@
 </template>
 
 <script setup lang="ts">
-// import { useWebApp, useWebAppHapticFeedback, useWebAppMainButton, useWebAppNavigation, useWebAppPopup, useWebAppQrScanner, useWebAppTheme, useWebAppViewport } from  '../composables'
-// import {onMounted, ref} from 'vue'
-// import router from "../router";
-//
-import {ref} from "vue";
+import { useWebApp, useWebAppHapticFeedback, useWebAppMainButton, useWebAppNavigation, useWebAppPopup, useWebAppQrScanner, useWebAppTheme, useWebAppViewport } from  '../composables'
+import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 
+onMounted(() => {
+  hideMainButton()
+})
 const router = useRouter() 
 const langs = ref([
     {name: 'Русский', flag: '🇷🇺', code: 'ru'},
@@ -225,19 +225,19 @@ const langs = ref([
 // const { expand, isExpanded, viewportHeight, viewportStableHeight } = useWebAppViewport()
 // const { openLink, openTelegramLink, switchInlineQuery } = useWebAppNavigation()
 // const { showConfirm, showAlert, showPopup } = useWebAppPopup()
-// const {
-//     showMainButton,
-//     hideMainButton,
-//     showMainButtonProgress,
-//     hideMainButtonProgress,
-//     mainButtonText,
-//     mainButtonColor,
-//     mainButtonTextColor,
-//     isMainButtonActive,
-//     isMainButtonVisible,
-//     isMainButtonProgressVisible,
-//     setMainButtonParams,
-// } = useWebAppMainButton()
+const {
+    showMainButton,
+    hideMainButton,
+    showMainButtonProgress,
+    hideMainButtonProgress,
+    mainButtonText,
+    mainButtonColor,
+    mainButtonTextColor,
+    isMainButtonActive,
+    isMainButtonVisible,
+    isMainButtonProgressVisible,
+    setMainButtonParams,
+} = useWebAppMainButton()
 // const { colorScheme, themeParams, headerColor, backgroundColor } = useWebAppTheme()
 // const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 // const { showScanQrPopup } = useWebAppQrScanner()
