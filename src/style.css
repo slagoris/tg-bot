@@ -4,7 +4,6 @@ body {
     /*--bg-color: var(--tg-theme-bg-color, #000);*/
     font-family: sans-serif;
     background-color: var(--bg-color);
-    background-image: url("public/images/bg.jpg");
     background-repeat: no-repeat;
     background-size:  cover;
     background-position: top;
