@@ -15,7 +15,7 @@
             </li>
         </ul>
     </section>
-    <tg-main-button  @click="router.back()"/>
+<!--    <tg-main-button  @click="router.back()"/>-->
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
