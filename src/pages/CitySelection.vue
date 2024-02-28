@@ -1,5 +1,5 @@
 <template>
-    <tg-main-button @click="router.back()"/>
+    <tg-back-button @click="router.back()"/>
     <section>
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
@@ -13,7 +13,7 @@
         </ul>
         <div v-if="selectedCity">{{selectedCity.name}}</div>
     </section>
-    <tg-main-button :text='`Выбран город: ${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
+    <tg-main-button :text='`${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
