@@ -11,6 +11,7 @@
                 <button @click="setCity(city)">{{ city.name }}</button>
             </li>
         </ul>
+        <div v-if="selectedCity">{{selectedCity.name}}</div>
     </section>
     <tg-main-button :text='`Выбран город: ${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
   <!--    <section>-->
@@ -212,7 +213,7 @@ import {
     useWebAppViewport
 } from '../composables'
 onMounted(() => {
-  hideMainButton()
+  // hideMainButton()
 })
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
@@ -227,7 +228,7 @@ const cities = ref([
 ])
 const setCity = (city) => {
         selectedCity.value = city
-        showMainButton()
+        // showMainButton()
 }
 
 // const testIsVisible = ref(false)
