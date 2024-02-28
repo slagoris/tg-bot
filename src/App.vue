@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { useWebApp, useWebAppHapticFeedback, useWebAppMainButton, useWebAppNavigation, useWebAppPopup, useWebAppQrScanner, useWebAppTheme, useWebAppViewport } from  './composables'
-import { onMounted } from 'vue'
+import {onMounted, ref} from 'vue'
 
+const testIsVisible = ref(false)
+const test = () => {
+    testIsVisible.value = !testIsVisible.value
+}
 const { version, platform, initData, initDataUnsafe, sendData } = useWebApp()
 const { expand, isExpanded, viewportHeight, viewportStableHeight } = useWebAppViewport()
 const { openLink, openTelegramLink, switchInlineQuery } = useWebAppNavigation()
@@ -37,6 +41,11 @@ function toggleMainButtonProgress() {
 </script>
 
 <template>
+    <tg-back-button @click.prevent="test"/>
+    <div v-if="testIsVisible" style="width: 50px; height: 50px; background: red">TEST</div>
+    <button @click="test">
+        TEST BACK
+    </button>
     <section>
         <tg-main-button  />
         <button @click.prevent="sendData('Hello, World!')">
