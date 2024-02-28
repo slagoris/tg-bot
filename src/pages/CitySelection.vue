@@ -213,7 +213,7 @@ import {
     useWebAppViewport
 } from '../composables'
 onMounted(() => {
-  // hideMainButton()
+  hideMainButton()
 })
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
@@ -227,8 +227,8 @@ const cities = ref([
 
 ])
 const setCity = (city) => {
-        selectedCity.value = city
         showMainButton()
+        selectedCity.value = city
 }
 
 // const testIsVisible = ref(false)
