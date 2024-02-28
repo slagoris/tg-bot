@@ -228,7 +228,7 @@ const cities = ref([
 ])
 const setCity = (city) => {
         selectedCity.value = city
-        // showMainButton()
+        showMainButton()
 }
 
 // const testIsVisible = ref(false)
