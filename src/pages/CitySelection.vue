@@ -11,7 +11,6 @@
                 <button @click="setCity(city)">{{ city.name }}</button>
             </li>
         </ul>
-        <div v-if="selectedCity">{{selectedCity.name}}</div>
     </section>
     <tg-main-button :text='`Выбран город: ${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
   <!--    <section>-->
@@ -227,10 +226,8 @@ const cities = ref([
 
 ])
 const setCity = (city) => {
-    if (!isMainButtonVisible.value) {
         selectedCity.value = city
         showMainButton()
-    }
 }
 
 // const testIsVisible = ref(false)
