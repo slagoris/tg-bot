@@ -212,10 +212,10 @@ import {
     useWebAppTheme,
     useWebAppViewport
 } from '../composables'
-// import {onMounted, ref} from 'vue'
-// import router from "../router";
-//
-import {ref} from "vue";
+onMounted(() => {
+  hideMainButton()
+})
+import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
