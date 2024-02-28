@@ -41,7 +41,7 @@ function toggleMainButtonProgress() {
 </script>
 
 <template>
-    <tg-back-button @click.prevent="test"/>
+    <tg-back-button @click="test"/>
     <div v-if="testIsVisible" style="width: 50px; height: 50px; background: red">TEST</div>
     <button @click="test">
         TEST BACK
