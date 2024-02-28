@@ -1,8 +1,9 @@
 <template>
-    <tg-main-button  @click="router.back()"/>
+    <tg-main-button @click="router.back()"/>
     <section>
         <div style="width: 100%; margin-bottom: 30px;">
-            <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg" style="margin-bottom: 30px; height: 100%; max-height: 100px">
+            <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
+                 style="margin-bottom: 30px; height: 100%; max-height: 100px">
         </div>
         <h1>Выберите город</h1>
         <ul>
@@ -10,9 +11,9 @@
                 <button @click="setCity(city)">{{ city.name }}</button>
             </li>
         </ul>
-        
+
     </section>
-    <tg-main-button :visible="selectedCity" :text='`Выбран город: ${selectedCity?.name}  &#8594;  Далее`'  @click="router.back()"/>
+    <tg-main-button :text='`Выбран город: ${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
@@ -201,7 +202,16 @@
 </template>
 
 <script setup lang="ts">
-// import { useWebApp, useWebAppHapticFeedback, useWebAppMainButton, useWebAppNavigation, useWebAppPopup, useWebAppQrScanner, useWebAppTheme, useWebAppViewport } from  '../composables'
+import {
+    useWebApp,
+    useWebAppHapticFeedback,
+    useWebAppMainButton,
+    useWebAppNavigation,
+    useWebAppPopup,
+    useWebAppQrScanner,
+    useWebAppTheme,
+    useWebAppViewport
+} from '../composables'
 // import {onMounted, ref} from 'vue'
 // import router from "../router";
 //
@@ -209,16 +219,20 @@ import {ref} from "vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
-const selectedCity =  ref()
+const selectedCity = ref()
 const cities = ref([
     {name: 'Дубай', code: 'dubai'},
     {name: 'Москва', code: 'moscow'},
     {name: 'Другие города РФ', code: 'other'},
-    
+
 ])
 const setCity = (city) => {
-    selectedCity.value = city
+    if (!isMainButtonVisible.value) {
+        selectedCity.value = city
+        showMainButton()
+    }
 }
+
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
@@ -227,19 +241,19 @@ const setCity = (city) => {
 // const { expand, isExpanded, viewportHeight, viewportStableHeight } = useWebAppViewport()
 // const { openLink, openTelegramLink, switchInlineQuery } = useWebAppNavigation()
 // const { showConfirm, showAlert, showPopup } = useWebAppPopup()
-// const {
-//     showMainButton,
-//     hideMainButton,
-//     showMainButtonProgress,
-//     hideMainButtonProgress,
-//     mainButtonText,
-//     mainButtonColor,
-//     mainButtonTextColor,
-//     isMainButtonActive,
-//     isMainButtonVisible,
-//     isMainButtonProgressVisible,
-//     setMainButtonParams,
-// } = useWebAppMainButton()
+const {
+    showMainButton,
+    hideMainButton,
+    showMainButtonProgress,
+    hideMainButtonProgress,
+    mainButtonText,
+    mainButtonColor,
+    mainButtonTextColor,
+    isMainButtonActive,
+    isMainButtonVisible,
+    isMainButtonProgressVisible,
+    setMainButtonParams,
+} = useWebAppMainButton()
 // const { colorScheme, themeParams, headerColor, backgroundColor } = useWebAppTheme()
 // const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 // const { showScanQrPopup } = useWebAppQrScanner()
