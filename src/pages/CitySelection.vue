@@ -231,7 +231,7 @@ const cities = ref([
 ])
 const setCity = (city) => {
         selectedCity.value = city
-        mainButtonText.value =`Город ${city.name} &#8594;  Далее`
+        mainButtonText.value = `${selectedCity.value.name}  →  Далее`
         showMainButton()
 }
 
