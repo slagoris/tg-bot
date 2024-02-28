@@ -17,12 +17,13 @@ body {
     /*color-scheme: var(--tg-color-scheme);*/
 }
 
-body.gray {
-    background-color: var(--tg-theme-secondary-bg-color, #efefef);
-}
+/*body.gray {*/
+/*    background-color: var(--tg-theme-secondary-bg-color, #efefef);*/
+/*}*/
 
 a {
-    color: var(--tg-theme-link-color, #2678b6);
+    color: #000;
+    /*color: var(--tg-theme-link-color, #2678b6);*/
 }
 
 .btn {
@@ -46,7 +47,8 @@ button {
     border-radius: 27px;
     background: linear-gradient(180deg, rgba(197,176,94,1) 0%, rgba(231,215,173,1) 38%);
     /*background-color: var(--tg-theme-button-color, mediumpurple);*/
-    color: var(--tg-theme-button-text-color, #000);
+    color: #000;
+    /*color: var(--tg-theme-button-text-color, #000);*/
     cursor: pointer;
 }
 
@@ -152,11 +154,11 @@ section {
 }
 
 section#top_sect {
-    background-color: var(--tg-theme-bg-color, #ffffff);
+    /*background-color: var(--tg-theme-bg-color, #ffffff);*/
 }
 
 section#top_sect.second {
-    background-color: var(--tg-theme-secondary-bg-color, #efefef);
+    /*background-color: var(--tg-theme-secondary-bg-color, #efefef);*/
 }
 
 section .sect_row {
@@ -178,7 +180,7 @@ ul {
 }
 
 li {
-    color: var(--tg-theme-hint-color, #a8a8a8);
+    /*color: var(--tg-theme-hint-color, #a8a8a8);*/
 }
 
 textarea {
