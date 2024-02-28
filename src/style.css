@@ -1,17 +1,20 @@
 body {
     /*--bg-color: var(--tg-theme-bg-color, #fff);*/
-    --bg-color: var(--tg-theme-bg-color, #000);
+    --bg-color: #000;
+    /*--bg-color: var(--tg-theme-bg-color, #000);*/
     font-family: sans-serif;
     background-color: var(--bg-color);
     background-image: url("public/images/bg.jpg");
     background-repeat: no-repeat;
     background-size:  cover;
     background-position: top;
-    color: var(--tg-theme-text-color, #fff);
+    color: #fff;;
+    /*color: var(--tg-theme-text-color, #fff);*/
     font-size: 14px;
     margin: 0;
     padding: 0;
-    color-scheme: var(--tg-color-scheme);
+    color-scheme: #000;
+    /*color-scheme: var(--tg-color-scheme);*/
 }
 
 body.gray {
