@@ -1,5 +1,4 @@
 <template>
-<!--    <tg-main-button  @click="router.back()"/>-->
     <section>
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.png" alt="logo 7gg" width="100%">
@@ -16,6 +15,7 @@
             </li>
         </ul>
     </section>
+    <tg-main-button  @click="router.back()"/>
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
