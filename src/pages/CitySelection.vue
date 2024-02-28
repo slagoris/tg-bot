@@ -2,15 +2,17 @@
     <tg-main-button  @click="router.back()"/>
     <section>
         <div style="width: 100%; margin-bottom: 30px;">
-            <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg" style="margin-bottom: 30px; height: 100%; max-height: 150px">
+            <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg" style="margin-bottom: 30px; height: 100%; max-height: 100px">
         </div>
         <h1>Выберите город</h1>
         <ul>
             <li v-for="city in cities">
-                <button>{{city}}</button>
+                <button @click="setCity(city)">{{ city.name }}</button>
             </li>
         </ul>
     </section>
+    
+    <tg-main-button :text="selectedCity?.name"   @click="router.back()"/>
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
@@ -207,7 +209,16 @@ import {ref} from "vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
-const cities = ref(['Дубай', 'Москва', 'Другие города РФ'])
+const selectedCity =  ref()
+const cities = ref([
+    {name: 'Дубай', code: 'dubai'},
+    {name: 'Москва', code: 'moscow'},
+    {name: 'Другие города РФ', code: 'other'},
+    
+])
+const setCity = (city) => {
+    selectedCity.value = city
+}
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
