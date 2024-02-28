@@ -13,7 +13,9 @@
         </ul>
         <div v-if="selectedCity">{{selectedCity.name}}</div>
     </section>
-    <tg-main-button :text='`${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
+    <div v-if="selectedCity">
+        <tg-main-button :text='`${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>
+    </div>
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
