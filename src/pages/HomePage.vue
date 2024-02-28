@@ -1,5 +1,5 @@
 <template>
-    <tg-main-button  @click="router.back()"/>
+<!--    <tg-main-button  @click="router.back()"/>-->
     <section>
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.png" alt="logo 7gg" width="100%">
@@ -209,7 +209,7 @@ import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 
 onMounted(() => {
-  hideMainButton()
+  // hideMainButton()
 })
 const router = useRouter() 
 const langs = ref([
