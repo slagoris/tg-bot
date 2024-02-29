@@ -19,7 +19,7 @@
         <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
         <button @click="test">Показать главную кнопку</button>
 <!--        <div v-if="selectedLang">-->
-            <tg-main-button @click="changeStep('city', selectedCity ? showMainButton : null)"/>
+            <tg-main-button @click="changeStep('city', showMainButton)"/>
 <!--        </div>-->
     </section>
     
@@ -39,7 +39,7 @@
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
         <button @click="test">Показать главную кнопку</button>
 <!--        <div v-if="selectedCity">-->
-            <tg-main-button @click="changeStep('lang', selectedLang ? showMainButton : null)"/>
+            <tg-main-button @click="changeStep('lang', showMainButton)"/>
 <!--        </div>-->
     </section>
     
