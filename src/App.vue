@@ -23,7 +23,7 @@
     </section>
     
     <section v-if="currentStep === 'city'">
-        <button @click="changeStep('lang')">Назад</button>
+        <button @click="changeStep('lang', showMainButton)">Назад</button>
         <tg-back-button @click="changeStep('lang')"/>
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
@@ -262,9 +262,10 @@ const cities = ref([
     {name: 'Другие города РФ', code: 'other'},
 
 ])
-const changeStep = (step: StepType) => {
+const changeStep = (step: StepType, fn = () => {}) => {
     currentStep.value = step
     setMainButtonParams({text: mainBtnText.value})
+    fn()
 }
 const setLang = (lang) => {
     selectedLang.value = lang
