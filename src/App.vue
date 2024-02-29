@@ -1,8 +1,8 @@
 <template>
-    <div>Выбранный язык: {{selectedLang}}</div>
-    <div>Выбранный город: {{selectedCity}}</div>
-    <div>main button comp isVisible: {{computedMainButtonVisible}}</div>
-    <div>main isVisible: {{isMainButtonVisible}}</div>
+<!--    <div>Выбранный язык: {{selectedLang}}</div>-->
+<!--    <div>Выбранный город: {{selectedCity}}</div>-->
+<!--    <div>main button comp isVisible: {{computedMainButtonVisible}}</div>-->
+<!--    <div>main isVisible: {{isMainButtonVisible}}</div>-->
     <div v-if="computedMainButtonVisible">
         <tg-main-button @click="changeStep(nextStep)"/>
     </div>
@@ -19,8 +19,7 @@
                 </button>
             </li>
         </ul>
-        <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
-        <button @click="toggleMainButton">ТОГЛ</button>
+        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>
 <!--        <div v-if="selectedLang">-->
 <!--            <tg-main-button @click="changeStep('city')"/>-->
 <!--        </div>-->
@@ -28,23 +27,17 @@
     
     <section v-if="currentStep === 'city'">
         <tg-back-button @click="changeStep(backStep)"/>
-        <button @click="changeStep('lang', showMainButton)">Назад</button>
-<!--        <tg-back-button @click="changeStep('lang', showMainButton)"/>-->
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
                  style="margin-bottom: 30px; height: 100%; max-height: 100px">
         </div>
         <h1>Выберите город</h1>
         <ul>
-            <li v-for="city in cities">
-                <button @click="setCity(city)">{{ city.name }}</button>
+            <li v-for="(city, index) in cities">
+                <button @click="setCity(city, index)" :class="{active: city.selected}">{{ city.name }}</button>
             </li>
         </ul>
-        <div v-if="selectedCity">{{selectedCity?.name}}</div>
-        <button @click="toggleMainButton">ТОГЛ</button>
-<!--        <div v-if="selectedCity">-->
-<!--            <tg-main-button  @click="changeStep('lang', showMainButton)"/>-->
-<!--        </div>-->
+        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>
     </section>
     
     
@@ -274,6 +267,7 @@ const changeStep = (step: StepType, fn = () => {}) => {
 }
 const setLang = (lang, index) => {
     selectedLang.value = lang
+    langs.value.forEach((el) => el.selected = false)
     langs.value[index].selected = true
     setMainButtonParams({text: mainBtnText.value})    
     showMainButton()
@@ -281,6 +275,7 @@ const setLang = (lang, index) => {
 
 const setCity = (city, index) => {
     selectedCity.value = city
+    cities.value.forEach((el) => el.selected = false)
     cities.value[index].selected = true
     setMainButtonParams({text: mainBtnText.value})
     showMainButton()
@@ -347,7 +342,12 @@ const computedMainButtonVisible = computed(() => {
 // }
 </script>
 
-<style scoped>
+<style lang="scss">
+button {
+    &.active {
+        background: linear-gradient(230deg, rgb(223 183 25) 0%, rgb(213 174 71) 15%);
+    }
+}
 
 </style>
 
