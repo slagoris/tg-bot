@@ -265,7 +265,7 @@ onMounted(() => {
     // hideMainButton()
 })
 type StepType = 'lang' | 'city' | 'menu' | undefined
-const currentStep = ref<StepType>('menu')
+const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
 const langs = ref([
@@ -334,6 +334,8 @@ const backStep = computed(() => {
             return;
         case 'city':
             return 'lang';
+        case 'menu':
+            return 'city';
     }
 })
 const nextStep = computed(() => {
@@ -341,7 +343,7 @@ const nextStep = computed(() => {
         case 'lang':
             return 'city';
         case 'city':
-            return 'lang';
+            return 'menu';
     }
 })
 
@@ -378,7 +380,7 @@ const toggleMainButton = () => {
 const computedMainButtonVisible = computed(() => {
     return !(!isMainButtonVisible.value ||
         isMainButtonActive.value && currentStep.value === 'lang' && !selectedLang.value ||
-        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value);
+        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value)
 })
 
 // function toggleMainButtonProgress() {
@@ -401,9 +403,11 @@ button {
   grid-gap: 3px;
 
   &__item {
+      
       text-align: center;
     padding: 10px;
-    background: red;
+      background: darkgray;
+
       &:nth-child(7) {
           grid-column: 1 / 3;
       }
@@ -416,6 +420,7 @@ button {
     button {
         margin: 0;
         border-radius: 4px;
+        height: 100%;
     }
 }
 </style>
