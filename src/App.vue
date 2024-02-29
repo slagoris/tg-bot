@@ -1,7 +1,8 @@
 <template>
     <div>Выбранный язык: {{selectedLang}}</div>
     <div>Выбранный город: {{selectedCity}}</div>
-    <div>main button isVisible: {{computedMainButtonVisible}}</div>
+    <div>main button comp isVisible: {{computedMainButtonVisible}}</div>
+    <div>main isVisible: {{isMainButtonVisible}}</div>
     <div v-if="computedMainButtonVisible">
         <tg-main-button @click="changeStep(nextStep)"/>
     </div>
