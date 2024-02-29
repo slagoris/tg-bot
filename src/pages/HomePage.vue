@@ -14,7 +14,7 @@
         </ul>
         {{selectedLang?.name}}
     </section>
-    <tg-main-button  :text='`${selectedLang?.name}  &#8594;  Далее`' @click="router.back()"/>
+    <tg-main-button  :text='`${selectedLang?.name}  &#8594;  Далее`' @click="router.push({name: 'city'})"/>
     <!--    <tg-main-button  @click="router.back()"/>-->
   <!--    <section>-->
   <!--        <tg-main-button  />-->
