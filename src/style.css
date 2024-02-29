@@ -51,6 +51,7 @@ button {
     color: #000;
     /*color: var(--tg-theme-button-text-color, #000);*/
     cursor: pointer;
+    
 }
 
 .main-container {
