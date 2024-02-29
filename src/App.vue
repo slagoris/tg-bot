@@ -380,7 +380,8 @@ const toggleMainButton = () => {
 const computedMainButtonVisible = computed(() => {
     return !(!isMainButtonVisible.value ||
         isMainButtonActive.value && currentStep.value === 'lang' && !selectedLang.value ||
-        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value)
+        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value) ||
+        currentStep.value === 'menu'
 })
 
 // function toggleMainButtonProgress() {
