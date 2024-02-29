@@ -41,7 +41,7 @@
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
         </div>
-        <h1>Добро пожаловать в 7GG 🤝</h1>
+        <h1> {{ initDataUnsafe.user }} Добро пожаловать в 7GG 🤝</h1>
         <ul>
             <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
             <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
@@ -52,15 +52,12 @@
                 {{ offer.name }} {{ offer.exchangeRate }}
             </li>
         </ul>
-        <ul>
-            <li v-for="(lang, index) in langs">
-                <button @click="setLang(lang, index)" :class="{active: lang.selected}">
-                    <span v-text="lang?.name"/>
-                    <span v-text="lang?.flag" style="margin-left: 10px;"/>
-                </button>
+        <ul class="menu">
+            <li class="menu__item" v-for="item in menu">
+                <button>{{item.name}}</button>
             </li>
         </ul>
-        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>
+<!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
     </section>
 
 
@@ -205,15 +202,14 @@
   <!--            </ul>-->
   <!--        </div>-->
 
-          <div>
-              <h4>Data passed</h4>
-              <h5>initData</h5>
-              <pre><code>{{ initData }}</code></pre>
-              <h5>initDataUnsafe</h5>
-              <pre><code>{{ initDataUnsafe }}</code></pre>
-          </div>
-
-  <!--        <div>-->
+<!--          <div>-->
+<!--              <h4>Data passed</h4>-->
+<!--              <h5>initData</h5>-->
+<!--              {{ initData }}-->
+<!--              <h5>initDataUnsafe</h5>-->
+<!--              {{ initDataUnsafe.user }}-->
+<!--          </div>-->
+<!--          <div>-->
   <!--            <h4>Theme params</h4>-->
   <!--            <div class="sect_row">-->
   <!--                Color scheme: {{ colorScheme }}-->
@@ -293,6 +289,15 @@ const exchangeOffers = ref([
     {name: 'RUB(card) на AED', exchangeRate: 'до 28.878'},
     {name: 'Менеджер-чеки', exchangeRate: null},
     {name: 'Переводы', exchangeRate: null},
+])
+const menu = ref([
+    {name: 'Обменять валюты'},
+    {name: 'История услуг'},
+    {name: 'Связаться с менеджером'},
+    {name: 'Курсы'},
+    {name: 'Реферал'},
+    {name: 'Наши услуги'},
+    
 ])
 const changeStep = (step: StepType, fn = () => {
 }) => {
@@ -403,6 +408,15 @@ button {
           grid-column: 1 / 3;
       }
   }
+}
+.menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px;
+    button {
+        margin: 0;
+        border-radius: 4px;
+    }
 }
 </style>
 
