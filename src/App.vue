@@ -49,13 +49,15 @@
             <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
         </ul>
         <ul class="exchange-offers">
-            <li class="exchange-offers__item" v-for="offer in exchangeOffers">
+            <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
+                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"
+            >
                 {{ offer.name }} {{ offer.exchangeRate }}
             </li>
         </ul>
         <ul class="menu">
             <li class="menu__item" v-for="item in menu">
-                <button>{{item.name}}</button>
+                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
             </li>
         </ul>
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
@@ -355,7 +357,7 @@ const nextStep = computed(() => {
 const { version, platform, initData, initDataUnsafe, sendData } = useWebApp()
 // const { expand, isExpanded, viewportHeight, viewportStableHeight } = useWebAppViewport()
 // const { openLink, openTelegramLink, switchInlineQuery } = useWebAppNavigation()
-// const { showConfirm, showAlert, showPopup } = useWebAppPopup()
+const { showConfirm, showAlert, showPopup } = useWebAppPopup()
 const {
     showMainButton,
     hideMainButton,
@@ -379,10 +381,17 @@ const toggleMainButton = () => {
         : showMainButton()
 }
 const computedMainButtonVisible = computed(() => {
-    return !(!isMainButtonVisible.value ||
+    if (
+        !isMainButtonVisible.value ||
         isMainButtonActive.value && currentStep.value === 'lang' && !selectedLang.value ||
-        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value) ||
-        currentStep.value !== 'menu'
+        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value ||
+        currentStep.value === 'menu'
+    ) {
+      return false
+    } else {
+      return true
+    }
+    
 })
 
 // function toggleMainButtonProgress() {
