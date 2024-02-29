@@ -2,8 +2,9 @@
     <div>Выбранный язык: {{selectedLang}}</div>
     <div>Выбранный город: {{selectedCity}}</div>
     <div>main button isVisible: {{computedMainButtonVisible}}</div>
-    <tg-back-button @click="changeStep(backStep)"/>
-    <tg-main-button @click="changeStep(nextStep)"/>
+    <div v-if="computedMainButtonVisible">
+        <tg-main-button @click="changeStep(nextStep)"/>
+    </div>
     <section v-if="currentStep === 'lang'">
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.png" alt="logo 7gg" width="100%">
@@ -25,6 +26,7 @@
     </section>
     
     <section v-if="currentStep === 'city'">
+        <tg-back-button @click="changeStep(backStep)"/>
         <button @click="changeStep('lang', showMainButton)">Назад</button>
 <!--        <tg-back-button @click="changeStep('lang', showMainButton)"/>-->
         <div style="width: 100%; margin-bottom: 30px;">
