@@ -15,7 +15,9 @@
         {{selectedLang?.name}}
         <button @click.prevent="router.push({name: 'city'})">Выбор города</button>
     </section>
-    <tg-main-button @click.prevent="router.push({name: 'city'})"/>
+    <div v-if="selectedLang">
+        <tg-main-button @click="router.push({name: 'city'})"/>
+    </div>
     <!--    <tg-main-button  @click="router.back()"/>-->
   <!--    <section>-->
   <!--        <tg-main-button  />-->
