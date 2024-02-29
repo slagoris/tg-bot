@@ -35,7 +35,7 @@
             </li>
         </ul>
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
-        <div v-if="selectedLang">
+        <div v-if="selectedCity">
             <tg-main-button @click="changeStep('lang')"/>
         </div>
     </section>
