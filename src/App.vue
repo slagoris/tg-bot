@@ -38,6 +38,7 @@
     </section>
 
     <section v-if="currentStep === 'menu'">
+        <tg-back-button @click="changeStep(backStep)"/>
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
         </div>
