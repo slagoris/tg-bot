@@ -1,6 +1,7 @@
 <template>
     <div>Выбранный язык: {{selectedLang}}</div>
     <div>Выбранный город: {{selectedCity}}</div>
+    <div>main button isVisible: {{isMainButtonVisible}}</div>
     
     <section v-if="currentStep === 'lang'">
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
@@ -18,13 +19,13 @@
         <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
         <button @click="test">Показать главную кнопку</button>
         <div v-if="selectedLang">
-            <tg-main-button @click="changeStep('city')"/>
+            <tg-main-button @click="changeStep('city', selectedCity ? showMainButton : null)"/>
         </div>
     </section>
     
     <section v-if="currentStep === 'city'">
         <button @click="changeStep('lang', showMainButton)">Назад</button>
-        <tg-back-button @click="changeStep('lang')"/>
+        <tg-back-button @click="changeStep('lang', showMainButton)"/>
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
                  style="margin-bottom: 30px; height: 100%; max-height: 100px">
@@ -38,7 +39,7 @@
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
         <button @click="test">Показать главную кнопку</button>
         <div v-if="selectedCity">
-            <tg-main-button @click="changeStep('lang')"/>
+            <tg-main-button @click="changeStep('lang', selectedLang ? showMainButton : null)"/>
         </div>
     </section>
     
