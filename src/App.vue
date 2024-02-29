@@ -23,7 +23,7 @@
     
     <section v-if="currentStep === 'city'">
         <button @click="changeStep('lang')">Назад</button>
-        <tg-back-button />
+        <tg-back-button @click="changeStep('lang')"/>
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
                  style="margin-bottom: 30px; height: 100%; max-height: 100px">
@@ -240,7 +240,7 @@ import {
     useWebAppTheme,
     useWebAppViewport
 } from './composables'
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 onMounted(() => {
     // hideMainButton()
@@ -262,18 +262,25 @@ const cities = ref([
 ])
 const changeStep = (step: StepType) => {
     currentStep.value = step
+    setMainButtonParams({text: mainBtnText.value})
 }
 const setLang = (lang) => {
     selectedLang.value = lang
-    setMainButtonParams({text: `${selectedLang.value.name}  →  Далее`})    
+    setMainButtonParams({text: mainBtnText.value})    
     showMainButton()
 }
 
 const setCity = (city) => {
     selectedCity.value = city
-    setMainButtonParams({text: `${selectedCity.value.name}  →  Далее`})
+    setMainButtonParams({text: mainBtnText.value})
     showMainButton()
 }
+const mainBtnText = computed(() => {
+    switch (currentStep.value) {
+        case 'lang': return `${selectedLang.value.name}  →  Далее`;
+        case 'city': return `${selectedCity.value.name}  →  Далее`;
+    }
+}) 
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
