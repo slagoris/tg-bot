@@ -6,16 +6,16 @@
         <h1>Выберите язык</h1>
         <ul>
             <li v-for="lang in langs">
-                <router-link :to="{name: 'city'}" >
-                    <button>
-                        <span v-text="lang.name"/>
-                        <span v-text="lang.flag" style="margin-left: 10px;"/>
-                    </button>
-                </router-link>
+                <button @click="setLang(lang)">
+                    <span v-text="lang.name"/>
+                    <span v-text="lang.flag" style="margin-left: 10px;"/>
+                </button>
             </li>
         </ul>
+        {{selectedLang?.name}}
     </section>
-<!--    <tg-main-button  @click="router.back()"/>-->
+    <tg-main-button  :text='`${selectedLang?.name}  &#8594;  Далее`' @click="router.back()"/>
+    <!--    <tg-main-button  @click="router.back()"/>-->
   <!--    <section>-->
   <!--        <tg-main-button  />-->
   <!--        <button @click.prevent="sendData('Hello, World!')">-->
@@ -204,19 +204,34 @@
 </template>
 
 <script setup lang="ts">
-import { useWebApp, useWebAppHapticFeedback, useWebAppMainButton, useWebAppNavigation, useWebAppPopup, useWebAppQrScanner, useWebAppTheme, useWebAppViewport } from  '../composables'
+import {
+    useWebApp,
+    useWebAppHapticFeedback,
+    useWebAppMainButton,
+    useWebAppNavigation,
+    useWebAppPopup,
+    useWebAppQrScanner,
+    useWebAppTheme,
+    useWebAppViewport
+} from '../composables'
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 
 onMounted(() => {
-  // hideMainButton()
+    // hideMainButton()
 })
-const router = useRouter() 
+const router = useRouter()
 const langs = ref([
     {name: 'Русский', flag: '🇷🇺', code: 'ru'},
     {name: 'English', flag: '🇬🇧', code: 'en'},
     {name: 'Chinese', flag: '🇨🇳', code: 'ch'},
 ])
+const selectedLang = ref()
+const setLang = (lang) => {
+    selectedLang.value = lang
+    mainButtonText.value = `${selectedLang.value.name}  →  Далее`
+    showMainButton()
+} 
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
