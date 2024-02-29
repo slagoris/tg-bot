@@ -1,7 +1,7 @@
 <template>
     <div>Выбранный язык: {{selectedLang}}</div>
     <div>Выбранный город: {{selectedCity}}</div>
-    <div>main button isVisible: {{isMainButtonVisible}}</div>
+    <div>main button isVisible: {{computedMainButtonVisible}}</div>
     <tg-back-button @click="changeStep(backStep)"/>
     <tg-main-button @click="changeStep(nextStep)"/>
     <section v-if="currentStep === 'lang'">
@@ -325,10 +325,13 @@ const {
 // const { showScanQrPopup } = useWebAppQrScanner()
 //
 const toggleMainButton = () => {
-    isMainButtonVisible.value
+    computedMainButtonVisible.value
         ? hideMainButton()
         : showMainButton()
 }
+const computedMainButtonVisible = computed(() => {
+    return isMainButtonVisible.value
+})
 
 // function toggleMainButtonProgress() {
 //     isMainButtonProgressVisible.value
