@@ -12,8 +12,8 @@
         </div>
         <h1>Выберите язык</h1>
         <ul>
-            <li v-for="lang in langs">
-                <button @click="setLang(lang)">
+            <li v-for="(lang, index) in langs" >
+                <button @click="setLang(lang, index)" :class="{active: lang.selected}">
                     <span v-text="lang?.name"/>
                     <span v-text="lang?.flag" style="margin-left: 10px;"/>
                 </button>
@@ -257,14 +257,14 @@ const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
 const langs = ref([
-    {name: 'Русский', flag: '🇷🇺', code: 'ru'},
-    {name: 'English', flag: '🇬🇧', code: 'en'},
-    {name: 'Chinese', flag: '🇨🇳', code: 'ch'},
+    {name: 'Русский', flag: '🇷🇺', code: 'ru', selected: false},
+    {name: 'English', flag: '🇬🇧', code: 'en', selected: false},
+    {name: 'Chinese', flag: '🇨🇳', code: 'ch', selected: false},
 ])
 const cities = ref([
-    {name: 'Дубай', code: 'dubai'},
-    {name: 'Москва', code: 'moscow'},
-    {name: 'Другие города РФ', code: 'other'},
+    {name: 'Дубай', code: 'dubai', selected: false},
+    {name: 'Москва', code: 'moscow', selected: false},
+    {name: 'Другие города РФ', code: 'other', selected: false},
 
 ])
 const changeStep = (step: StepType, fn = () => {}) => {
@@ -272,14 +272,16 @@ const changeStep = (step: StepType, fn = () => {}) => {
     setMainButtonParams({text: mainBtnText.value})
     fn()
 }
-const setLang = (lang) => {
+const setLang = (lang, index) => {
     selectedLang.value = lang
+    langs.value[index].selected = true
     setMainButtonParams({text: mainBtnText.value})    
     showMainButton()
 }
 
-const setCity = (city) => {
+const setCity = (city, index) => {
     selectedCity.value = city
+    cities.value[index].selected = true
     setMainButtonParams({text: mainBtnText.value})
     showMainButton()
 }
