@@ -10,12 +10,12 @@
         <ul>
             <li v-for="lang in langs">
                 <button @click="setLang(lang)">
-                    <span v-text="lang.name"/>
-                    <span v-text="lang.flag" style="margin-left: 10px;"/>
+                    <span v-text="lang?.name"/>
+                    <span v-text="lang?.flag" style="margin-left: 10px;"/>
                 </button>
             </li>
         </ul>
-        <button v-if="selectedLang" @click="changeStep('city')">{{selectedLang.name}} --> Дальше</button>
+        <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
         <div v-if="selectedLang">
             <tg-main-button @click="changeStep('city')"/>
         </div>
@@ -34,9 +34,9 @@
                 <button @click="setCity(city)">{{ city.name }}</button>
             </li>
         </ul>
-        <div v-if="selectedCity">{{selectedCity.name}}</div>
+        <div v-if="selectedCity">{{selectedCity?.name}}</div>
         <div v-if="selectedLang">
-            <tg-main-button @click="changeStep('city')"/>
+            <tg-main-button @click="changeStep('lang')"/>
         </div>
     </section>
     
@@ -277,8 +277,8 @@ const setCity = (city) => {
 }
 const mainBtnText = computed(() => {
     switch (currentStep.value) {
-        case 'lang': return `${selectedLang.value.name}  →  Далее`;
-        case 'city': return `${selectedCity.value.name}  →  Далее`;
+        case 'lang': return `${selectedLang?.value?.name}  →  Далее`;
+        case 'city': return `${selectedCity?.value?.name}  →  Далее`;
     }
 }) 
 // const testIsVisible = ref(false)
