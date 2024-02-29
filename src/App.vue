@@ -332,7 +332,9 @@ const toggleMainButton = () => {
         : showMainButton()
 }
 const computedMainButtonVisible = computed(() => {
-    return isMainButtonVisible.value
+    return !(!isMainButtonVisible.value ||
+        isMainButtonActive.value && currentStep.value === 'lang' && !selectedLang.value ||
+        isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value);
 })
 
 // function toggleMainButtonProgress() {
