@@ -16,6 +16,7 @@
             </li>
         </ul>
         <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
+        <button @click="test">Показать главную кнопку</button>
         <div v-if="selectedLang">
             <tg-main-button @click="changeStep('city')"/>
         </div>
@@ -35,6 +36,7 @@
             </li>
         </ul>
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
+        <button @click="test">Показать главную кнопку</button>
         <div v-if="selectedCity">
             <tg-main-button @click="changeStep('lang')"/>
         </div>
@@ -281,6 +283,9 @@ const mainBtnText = computed(() => {
         case 'city': return `${selectedCity?.value?.name}  →  Далее`;
     }
 }) 
+const test = () => {
+  showMainButton()
+}
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
