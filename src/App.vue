@@ -2,7 +2,8 @@
     <div>Выбранный язык: {{selectedLang}}</div>
     <div>Выбранный город: {{selectedCity}}</div>
     <div>main button isVisible: {{isMainButtonVisible}}</div>
-    
+    <tg-back-button @click="changeStep(backStep)"/>
+    <tg-main-button @click="changeStep(nextStep)"/>
     <section v-if="currentStep === 'lang'">
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.png" alt="logo 7gg" width="100%">
@@ -17,17 +18,15 @@
             </li>
         </ul>
         <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
-        <button @click="test">Показать главную кнопку</button>
         <button @click="toggleMainButton">ТОГЛ</button>
-        <div v-if="selectedLang">
-            тут главная кнопка тг
-            <tg-main-button @click="changeStep('city')"/>
-        </div>
+<!--        <div v-if="selectedLang">-->
+<!--            <tg-main-button @click="changeStep('city')"/>-->
+<!--        </div>-->
     </section>
     
     <section v-if="currentStep === 'city'">
         <button @click="changeStep('lang', showMainButton)">Назад</button>
-        <tg-back-button @click="changeStep('lang', showMainButton)"/>
+<!--        <tg-back-button @click="changeStep('lang', showMainButton)"/>-->
         <div style="width: 100%; margin-bottom: 30px;">
             <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
                  style="margin-bottom: 30px; height: 100%; max-height: 100px">
@@ -40,10 +39,9 @@
         </ul>
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
         <button @click="toggleMainButton">ТОГЛ</button>
-        <div v-if="selectedCity">
-            тут главная кнопка тг
-            <tg-main-button  @click="changeStep('lang', showMainButton)"/>
-        </div>
+<!--        <div v-if="selectedCity">-->
+<!--            <tg-main-button  @click="changeStep('lang', showMainButton)"/>-->
+<!--        </div>-->
     </section>
     
     
@@ -251,7 +249,7 @@ import {computed, onMounted, ref} from "vue";
 onMounted(() => {
     // hideMainButton()
 })
-type StepType = 'lang' | 'city' | 'menu' 
+type StepType = 'lang' | 'city' | 'menu' | undefined
 const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
@@ -287,10 +285,20 @@ const mainBtnText = computed(() => {
         case 'lang': return `${selectedLang?.value?.name}  →  Далее`;
         case 'city': return `${selectedCity?.value?.name}  →  Далее`;
     }
-}) 
-const test = () => {
-  showMainButton()
-}
+})
+const backStep = computed(() => {
+    switch (currentStep.value) {
+        case 'lang': return;
+        case 'city': return 'lang';
+    }
+})
+const nextStep = computed(() => {
+    switch (currentStep.value) {
+        case 'lang': return 'city';
+        case 'city': return 'lang';
+    }
+})
+
 // const testIsVisible = ref(false)
 // const test = () => {
 //     testIsVisible.value = !testIsVisible.value
