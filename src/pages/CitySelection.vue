@@ -12,9 +12,10 @@
             </li>
         </ul>
         <div v-if="selectedCity">{{selectedCity.name}}</div>
+        <button @click="router.back()">Назад к выбору языка</button>
     </section>
     <div v-if="selectedCity">
-        <tg-main-button />
+        <tg-main-button @click="router.back()"/>
 <!--        <tg-main-button  :text='`${selectedCity?.name}  &#8594;  Далее`' @click="router.back()"/>-->
     </div>
   <!--    <section>-->
