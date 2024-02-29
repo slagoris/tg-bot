@@ -13,8 +13,9 @@
             </li>
         </ul>
         {{selectedLang?.name}}
+        <button @click.prevent="router.push({name: 'city'})">Выбор города</button>
     </section>
-    <tg-main-button  :text='`${selectedLang?.name}  &#8594;  Далее`' @click="router.push({name: 'city'})"/>
+    <tg-main-button @click.prevent="router.push({name: 'city'})"/>
     <!--    <tg-main-button  @click="router.back()"/>-->
   <!--    <section>-->
   <!--        <tg-main-button  />-->
