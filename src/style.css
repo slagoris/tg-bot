@@ -31,8 +31,10 @@ a {
 }
 
 .btn-primary {
+    --tg-theme-button-color: linear-gradient(180deg, rgba(197,176,94,1) 0%, rgba(231,215,173,1) 38%);
+    --tg-theme-button-text-color: #000;
     background-color: var(--tg-theme-button-color, #50a8eb);
-    color: var(--tg-theme-button-text-color, #fff);
+    color: var(--tg-theme-button-text-color, #000);
     border: none;
 }
 
