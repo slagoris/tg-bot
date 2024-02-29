@@ -18,6 +18,7 @@
         </ul>
         <button v-if="selectedLang" @click="changeStep('city')">{{mainBtnText}}</button>
         <button @click="test">Показать главную кнопку</button>
+        <button @click="toggleMainButton">ТОГЛ</button>
         <div v-if="selectedLang">
             тут главная кнопка тг
             <tg-main-button @click="changeStep('city')"/>
@@ -38,10 +39,10 @@
             </li>
         </ul>
         <div v-if="selectedCity">{{selectedCity?.name}}</div>
-        <button @click="test">Показать главную кнопку</button>
+        <button @click="toggleMainButton">ТОГЛ</button>
         <div v-if="selectedCity">
             тут главная кнопка тг
-            <tg-main-button :is_visible="selectedLang" @click="changeStep('lang', showMainButton)"/>
+            <tg-main-button  @click="changeStep('lang', showMainButton)"/>
         </div>
     </section>
     
@@ -315,12 +316,12 @@ const {
 // const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 // const { showScanQrPopup } = useWebAppQrScanner()
 //
-// function toggleMainButton() {
-//     isMainButtonVisible.value
-//         ? hideMainButton()
-//         : showMainButton()
-// }
-//
+const toggleMainButton = () => {
+    isMainButtonVisible.value
+        ? hideMainButton()
+        : showMainButton()
+}
+
 // function toggleMainButtonProgress() {
 //     isMainButtonProgressVisible.value
 //         ? hideMainButtonProgress()
