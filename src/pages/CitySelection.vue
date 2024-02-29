@@ -217,7 +217,7 @@ import {
     useWebAppViewport
 } from '../composables'
 onMounted(() => {
-  // hideMainButton()
+  
 })
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
