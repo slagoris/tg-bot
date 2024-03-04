@@ -1,4 +1,3 @@
-
 <template>
     <section>
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
@@ -20,71 +19,6 @@
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
-
-<!--    <section v-if="currentStep === 'city'">-->
-<!--        <tg-back-button @click="changeStep(backStep)"/>-->
-<!--        <div style="width: 100%; margin-bottom: 30px;">-->
-<!--            <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"-->
-<!--                 style="margin-bottom: 30px; height: 100%; max-height: 100px">-->
-<!--        </div>-->
-<!--        <h1>Выберите город</h1>-->
-<!--        <ul>-->
-<!--            <li v-for="(city, index) in cities">-->
-<!--                <button @click="setCity(city, index)" :class="{active: city.selected}">{{ city.name }}</button>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
-<!--    </section>-->
-
-<!--    <section v-if="currentStep === 'menu'">-->
-<!--        <tg-back-button @click="changeStep(backStep)"/>-->
-<!--        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">-->
-<!--            <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">-->
-<!--        </div>-->
-<!--        <h1> <span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>-->
-<!--        <ul>-->
-<!--            <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>-->
-<!--            <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>-->
-<!--            <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>-->
-<!--        </ul>-->
-<!--        <ul class="exchange-offers">-->
-<!--            <li class="exchange-offers__item" v-for="offer in exchangeOffers" -->
-<!--                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"-->
-<!--            >-->
-<!--                {{ offer.name }} {{ offer.exchangeRate }}-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <ul class="menu">-->
-<!--            <li class="menu__item" v-for="item in menu">-->
-<!--                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </section>-->
-
-<!--    <section v-if="currentStep === 'exchange'">-->
-<!--        <tg-back-button @click="changeStep(backStep)"/>-->
-<!--        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">-->
-<!--            <img src="/public/images/exchange-ru.jpg" alt="exchange 7gg" width="100%">-->
-<!--        </div>-->
-<!--        <h1> <span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>-->
-<!--        <ul>-->
-<!--            <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>-->
-<!--            <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>-->
-<!--            <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>-->
-<!--        </ul>-->
-<!--        <ul class="exchange-offers">-->
-<!--            <li class="exchange-offers__item" v-for="offer in exchangeOffers"-->
-<!--                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"-->
-<!--            >-->
-<!--                {{ offer.name }} {{ offer.exchangeRate }}-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <ul class="menu">-->
-<!--            <li class="menu__item" v-for="item in menu">-->
-<!--                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </section>-->
 </template>
 
 <script setup lang="ts">
