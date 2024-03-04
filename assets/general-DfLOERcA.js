@@ -1,1 +1,0 @@
-import{k as g,r}from"./index-C2gxogXu.js";const x=g("generalStore",()=>{const t=r(),s=e=>{t.value=e},o=()=>t,n=r(),c=e=>{n.value=e},u=()=>n,a=r();return{currentLang:t,setLang:s,getLang:o,currentCity:n,getCity:u,setCity:c,exchangePair:a,setExchangePair:e=>{a.value=e}}});export{x as u};
