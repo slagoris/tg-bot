@@ -1,6 +1,6 @@
 body {
     /*--bg-color: var(--tg-theme-bg-color, #fff);*/
-    --bg-color: gray;
+    --bg-color: #000;
     /*--bg-color: var(--tg-theme-bg-color, #000);*/
     font-family: sans-serif;
     background-color: var(--bg-color);
@@ -39,20 +39,20 @@ a {
 }
 
 button {
-    display: block;
+/*    display: block;*/
     width: 100%;
-    font-size: 14px;
-    margin: 15px 0;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 27px;
-    background: linear-gradient(180deg, rgba(197,176,94,1) 0%, rgba(231,215,173,1) 38%);
-    /*background-color: var(--tg-theme-button-color, mediumpurple);*/
-    color: #000;
-    /*color: var(--tg-theme-button-text-color, #000);*/
-    cursor: pointer;
-    transition: all 0.2s ease;
-    
+/*    font-size: 14px;*/
+    margin: 3px 0;
+/*    padding: 12px 20px;*/
+/*    border: none;*/
+/*    border-radius: 27px;*/
+/*    background: linear-gradient(180deg, rgba(197,176,94,1) 0%, rgba(231,215,173,1) 38%);*/
+/*    !*background-color: var(--tg-theme-button-color, mediumpurple);*!*/
+/*    color: #000;*/
+/*    !*color: var(--tg-theme-button-text-color, #000);*!*/
+/*    cursor: pointer;*/
+/*    transition: all 0.2s ease;*/
+/*    */
 }
 
 .main-container {

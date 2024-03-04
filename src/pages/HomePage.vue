@@ -7,31 +7,33 @@
         <h1>Выберите язык</h1>
         <ul>
             <li v-for="(lang, index) in langs" :key="lang.code">
-                <button @click="setLang(lang)" :class="{active: useGeneralStore().currentLang?.code === lang.code}">
+                
+                <Button @click="setLang(lang)" :class="{active: useGeneralStore().currentLang?.code === lang.code}">
                     <span v-text="lang?.name"/>
                     <span v-text="lang?.flag" style="margin-left: 10px;"/>
-                </button>
+                </Button>
             </li>
         </ul>
-        <button @click="pairDialog = true">Popup</button>
-        
-       
+        <Button @click="pairDialog = true">Popup</Button>
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
-            <button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</button>
+            <Button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</Button>
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
-    <div class="popup-overlay" v-if="pairDialog">
-        <div class="popup" >
-            <button class="popup__close" @click="pairDialog = false">x</button>
-            <h1 style="color: black; text-align: center;">Title</h1>
-            <div style="width: 100%;">
-                <input type="number" v-model="pair" >
-            </div>
-            <button>Принять</button>
-        </div>
-    </div>
+    <Dialog v-model:visible="pairDialog" modal :draggable="false" header="TITLE">
+        <InputText v-model="pair" />
+    </Dialog>
+<!--    <div class="popup-overlay" v-if="pairDialog">-->
+<!--        <div class="popup" >-->
+<!--            <button class="popup__close" @click="pairDialog = false">x</button>-->
+<!--            <h1 style="color: black; text-align: center;">Title</h1>-->
+<!--            <div style="width: 100%;">-->
+<!--                <input type="number" v-model="pair" >-->
+<!--            </div>-->
+<!--            <button>Принять</button>-->
+<!--        </div>-->
+<!--    </div>-->
 </template>
 
 <script setup lang="ts">

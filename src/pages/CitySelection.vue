@@ -1,6 +1,6 @@
 <template>
         <section class="page">
-            <button @click="router.back()">НАЗАД</button>
+            <Button @click="router.back()">НАЗАД</Button>
             <tg-back-button @click="router.back()"/>
 <!--            <div style="width: 100%; margin-bottom: 30px;">-->
 <!--                <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"-->
@@ -8,12 +8,12 @@
 <!--            </div>-->
             <h1>Выберите город</h1>
             <ul>
-                <li v-for="(city, index) in cities" :key="city.code">
-                    <button @click="setCity(city)" :class="{active: useGeneralStore().currentCity?.code === city.code}">{{ city.name }}</button>
+                <li v-for="city in cities" :key="city.code">
+                    <Button @click="setCity(city)" :class="{active: useGeneralStore().currentCity?.code === city.code}">{{ city.name }}</Button>
                 </li>
             </ul>
             <div v-if="useGeneralStore().currentCity">
-                <button @click="router.push('/menu')">{{useGeneralStore().currentCity?.name}} > Далее</button>
+                <Button @click="router.push('/menu')">{{useGeneralStore().currentCity?.name}} > Далее</Button>
                 <tg-main-button @click="router.push('/menu')" />
             </div>
         </section>
@@ -45,7 +45,7 @@ const cities = ref([
     {name: 'Другие города РФ', code: 'other', selected: false},
 
 ])
-const setCity = (city, index) => {
+const setCity = (city) => {
     useGeneralStore().setCity(city)
     setMainButtonParams({text: city.name})
     showMainButton()

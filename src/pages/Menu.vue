@@ -1,6 +1,6 @@
 <template>
       <section>
-          <button @click="router.back()">НАЗАД</button>
+          <Button @click="router.back()">НАЗАД</Button>
           <tg-back-button @click="router.back()"/>
           <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
               <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">
@@ -20,7 +20,7 @@
           </ul>
           <ul class="menu">
               <li class="menu__item" v-for="item in menu">
-                  <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
+                  <Button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</Button>
               </li>
           </ul>
       </section>

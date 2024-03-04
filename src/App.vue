@@ -17,7 +17,7 @@ onMounted(() => {
 <style lang="scss">
 button {
   &.active {
-    background: linear-gradient(230deg, rgb(223 183 25) 0%, rgb(213 174 71) 15%);
+    background: #b45309;
   }
 }
 
