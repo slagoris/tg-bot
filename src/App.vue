@@ -60,7 +60,31 @@
                 <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
             </li>
         </ul>
-<!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
+    </section>
+
+    <section v-if="currentStep === 'menu'">
+        <tg-back-button @click="changeStep(backStep)"/>
+        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
+            <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
+        </div>
+        <h1> <span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
+        <ul>
+            <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
+            <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
+            <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
+        </ul>
+        <ul class="exchange-offers">
+            <li class="exchange-offers__item" v-for="offer in exchangeOffers"
+                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"
+            >
+                {{ offer.name }} {{ offer.exchangeRate }}
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item" v-for="item in menu">
+                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
+            </li>
+        </ul>
     </section>
 
 
@@ -149,23 +173,23 @@
   <!--            </ul>-->
   <!--        </div>-->
 
-  <!--        <div>-->
-  <!--            <h4>Popups:</h4>-->
-  <!--            <ul>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent="showAlert('Hello!');">showAlert</a>-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent="showConfirm('Are you sure?');">showConfirm</a>-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent="showPopup({message: 'Hello!'});">showPopup</a>-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent="showScanQrPopup({text: 'Test'})">showScanQrPopup</a>-->
-  <!--                </li>-->
-  <!--            </ul>-->
-  <!--        </div>-->
+          <div>
+              <h4>Popups:</h4>
+              <ul>
+                  <li>
+                      <button  @click.prevent="showAlert('Hello!');">showAlert</button>
+                  </li>
+                  <li>
+                      <button @click.prevent="showConfirm('Are you sure?');">showConfirm</button>
+                  </li>
+                  <li>
+                      <button @click.prevent="showPopup({message: 'Hello!'});">showPopup</button>
+                  </li>
+<!--                  <li>-->
+<!--                      <a href="#" @click.prevent="showScanQrPopup({text: 'Test'})">showScanQrPopup</a>-->
+<!--                  </li>-->
+              </ul>
+          </div>
 
   <!--        <div>-->
   <!--            <h4>Haptics:</h4>-->
