@@ -4,18 +4,19 @@
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/lang-ru.jpg" alt="logo 7gg" width="100%">
         </div>
+       
         <h1>Выберите язык</h1>
         <ul>
-            <li v-for="(lang, index) in langs">
-                <button @click="setLang(lang, index)" :class="{active: lang.selected}">
+            <li v-for="(lang, index) in langs" :key="lang.code">
+                <button @click="setLang(lang)" :class="{active: useGeneralStore().currentLang?.code === lang.code}">
                     <span v-text="lang?.name"/>
                     <span v-text="lang?.flag" style="margin-left: 10px;"/>
                 </button>
             </li>
         </ul>
         <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>
-        <div v-if="selectedLang">
-            <button @click="router.push('/city')">{{selectedLang.name}} > Далее</button>
+        <div v-if="useGeneralStore().currentLang">
+            <button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</button>
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
@@ -99,6 +100,7 @@ import {
 } from '../composables'
 import {computed, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import {useGeneralStore} from "../stores/general.ts";
 const  router = useRouter()
 onMounted(() => {
     // hideMainButton()
@@ -108,9 +110,9 @@ const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
 const langs = ref([
-    {name: 'Русский', flag: '🇷🇺', code: 'ru', selected: false},
-    {name: 'English', flag: '🇬🇧', code: 'en', selected: false},
-    {name: 'Chinese', flag: '🇨🇳', code: 'ch', selected: false},
+    {name: 'Русский', flag: '🇷🇺', code: 'ru'},
+    {name: 'English', flag: '🇬🇧', code: 'en'},
+    {name: 'Chinese', flag: '🇨🇳', code: 'ch'},
 ])
 const cities = ref([
     {name: 'Дубай', code: 'dubai', selected: false},
@@ -144,11 +146,9 @@ const changeStep = (step: StepType, fn = () => {
     setMainButtonParams({text: mainBtnText.value})
     fn()
 }
-const setLang = (lang, index) => {
-    selectedLang.value = lang
-    langs.value.forEach((el) => el.selected = false)
-    langs.value[index].selected = true
-    setMainButtonParams({text: mainBtnText.value})
+const setLang = (lang) => {
+    useGeneralStore().setLang(lang)
+    setMainButtonParams({text: lang.name})
     showMainButton()
 }
 

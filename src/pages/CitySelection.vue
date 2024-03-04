@@ -8,12 +8,12 @@
             </div>
             <h1>Выберите город</h1>
             <ul>
-                <li v-for="(city, index) in cities">
-                    <button @click="setCity(city, index)" :class="{active: city.selected}">{{ city.name }}</button>
+                <li v-for="(city, index) in cities" :key="city.code">
+                    <button @click="setCity(city)" :class="{active: useGeneralStore().currentCity?.code === city.code}">{{ city.name }}</button>
                 </li>
             </ul>
-            <div v-if="selectedCity">
-                <button @click="router.push('/menu')">{{selectedCity?.name}} > Далее</button>
+            <div v-if="useGeneralStore().currentCity">
+                <button @click="router.push('/menu')">{{useGeneralStore().currentCity?.name}} > Далее</button>
                 <tg-main-button @click="router.push('/menu')" />
             </div>
         </section>
@@ -23,6 +23,7 @@
 import {useRouter} from "vue-router";
 import {ref} from "vue";
 import {useWebAppMainButton} from "../composables";
+import {useGeneralStore} from "../stores/general.ts";
 const {
     showMainButton,
     hideMainButton,
@@ -39,16 +40,14 @@ const {
 const router = useRouter()
 const selectedCity = ref()
 const cities = ref([
-    {name: 'Дубай', code: 'dubai', selected: false},
-    {name: 'Москва', code: 'moscow', selected: false},
+    {name: 'Дубай', code: 'dubai'},
+    {name: 'Москва', code: 'moscow'},
     {name: 'Другие города РФ', code: 'other', selected: false},
 
 ])
 const setCity = (city, index) => {
-    selectedCity.value = city
-    cities.value.forEach((el) => el.selected = false)
-    cities.value[index].selected = true
-    setMainButtonParams({text: selectedCity.value.name})
+    useGeneralStore().setCity(city)
+    setMainButtonParams({text: city.name})
     showMainButton()
 }
 </script>
