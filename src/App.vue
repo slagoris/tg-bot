@@ -42,32 +42,7 @@
         <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
             <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
         </div>
-        <h1> <span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
-        <ul>
-            <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
-            <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
-            <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
-        </ul>
-        <ul class="exchange-offers">
-            <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
-                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"
-            >
-                {{ offer.name }} {{ offer.exchangeRate }}
-            </li>
-        </ul>
-        <ul class="menu">
-            <li class="menu__item" v-for="item in menu">
-                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
-            </li>
-        </ul>
-    </section>
-
-    <section v-if="currentStep === 'menu'">
-        <tg-back-button @click="changeStep(backStep)"/>
-        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
-            <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
-        </div>
-        <h1> <span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
+        <h1><span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
         <ul>
             <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
             <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
@@ -82,197 +57,226 @@
         </ul>
         <ul class="menu">
             <li class="menu__item" v-for="item in menu">
-                <button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</button>
+                <button @click.prevent="showAlert(`${item.name}`);">{{ item.name }}</button>
+            </li>
+        </ul>
+    </section>
+
+    <section v-if="currentStep === 'menu'">
+        <tg-back-button @click="changeStep(backStep)"/>
+        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
+            <img src="/public/images/greet-ru.jpg" alt="logo 7gg" width="100%">
+        </div>
+        <h1><span>@{{ initDataUnsafe.user.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
+        <ul>
+            <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
+            <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
+            <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
+        </ul>
+        <ul class="exchange-offers">
+            <li class="exchange-offers__item" v-for="offer in exchangeOffers"
+                @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"
+            >
+                {{ offer.name }} {{ offer.exchangeRate }}
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item" v-for="item in menu">
+                <button @click.prevent="showAlert(`${item.name}`);">{{ item.name }}</button>
             </li>
         </ul>
     </section>
 
 
-  <!--    <tg-main-button  @click="router.back()"/>-->
-  <!--    <section>-->
-  <!--        <tg-main-button  />-->
-  <!--        <button @click.prevent="sendData('Hello, World!')">-->
-  <!--            Send «Hello, World!»-->
-  <!--        </button>-->
-  <!--    </section>-->
+    <section>
+        <tg-main-button/>
+        <button @click.prevent="sendData('Hello, World!')">
+            Send «Hello, World!»
+        </button>
+    </section>
 
-  <!--    <section>-->
-  <!--        <div>-->
-  <!--            <h4>Main Button:</h4>-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                isMainButtonActive: {{ isMainButtonActive }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                isMainButtonVisible: {{ isMainButtonVisible }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                isMainButtonProgressVisible: {{ isMainButtonProgressVisible }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                mainButtonText: {{ mainButtonText }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                mainButtonColor: {{ mainButtonColor }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                mainButtonTextColor: {{ mainButtonTextColor }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
+    <section>
+        <div>
+            <h4>Main Button:</h4>
+            <!--            <p>-->
+            <!--                isMainButtonActive: {{ isMainButtonActive }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                isMainButtonVisible: {{ isMainButtonVisible }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                isMainButtonProgressVisible: {{ isMainButtonProgressVisible }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                mainButtonText: {{ mainButtonText }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                mainButtonColor: {{ mainButtonColor }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                mainButtonTextColor: {{ mainButtonTextColor }}-->
+            <!--            </p>-->
 
-  <!--            <button @click.prevent="toggleMainButton">Toggle Main Button</button>-->
-  <!--            <button @click.prevent="toggleMainButtonProgress">Toggle Main Button Progress</button>-->
-  <!--            <button @click.prevent="setMainButtonParams({-->
-  <!--            text: 'DONE', color: '#000',text_color: '#e6e6e6',})">-->
-  <!--                Update Main Button-->
-  <!--            </button>-->
-  <!--        </div>-->
+            <button @click.prevent="toggleMainButton">Toggle Main Button</button>
+            <button @click.prevent="toggleMainButtonProgress">Toggle Main Button Progress</button>
+            <button @click.prevent="setMainButtonParams({
+              text: 'DONE', color: '#000',text_color: '#e6e6e6',})">
+                Update Main Button
+            </button>
+        </div>
 
-  <!--        <div>-->
-  <!--            <h4>Viewport:</h4>-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                Viewport height: {{ viewportHeight }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                Viewport stable height: {{ viewportStableHeight }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <p>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                Expanded: {{ isExpanded }}&ndash;&gt;-->
-  <!--            &lt;!&ndash;            </p>&ndash;&gt;-->
+        <div>
+            <h4>Viewport:</h4>
+            <!--            <p>-->
+            <!--                Viewport height: {{ viewportHeight }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                Viewport stable height: {{ viewportStableHeight }}-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                Expanded: {{ isExpanded }}-->
+            <!--            </p>-->
 
-  <!--            <button @click.prevent="expand()">-->
-  <!--                Expand Viewport-->
-  <!--            </button>-->
-  <!--        </div>-->
+            <button @click.prevent="expand()">
+                Expand Viewport
+            </button>
+        </div>
 
-  <!--        <div>-->
-  <!--            <h4>Navigation:</h4>-->
-  <!--            <ul>-->
-  <!--                <li>-->
-  <!--                    <a href="?nextpage=1">Regular link</a> (opens inside webview)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="https://telegram.org/" target="_blank">target="_blank" link</a> (opens outside webview)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="javascript:window.open('https://telegram.org/');">window.open() link</a> (opens outside webview)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="https://t.me/like">LikeBot t.me link</a> (opens inside Telegram app)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent="openTelegramLink('https://t.me/vote');">openTelegramLink()</a> (opens inside Telegram app)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent=" openLink('https://google.com/'); ">openLink()</a> (opens outside webview)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent=" openLink('https://telegra.ph/api', { try_instant_view: true }); ">openLink({try_instant_view:true})</a>(opens IV inside Telegram app)-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    <a href="#" @click.prevent=" switchInlineQuery('query'); ">switchInlineQuery('query')</a>(opens inline query inside Telegram app)-->
-  <!--                </li>-->
-  <!--            </ul>-->
-  <!--        </div>-->
+        <div>
+            <h4>Navigation:</h4>
+            <ul>
+                <li>
+                    <a href="?nextpage=1">Regular link</a> (opens inside webview)
+                </li>
+                <li>
+                    <a href="https://telegram.org/" target="_blank">target="_blank" link</a> (opens outside webview)
+                </li>
+                <li>
+                    <a href="javascript:window.open('https://telegram.org/');">window.open() link</a> (opens outside
+                    webview)
+                </li>
+                <li>
+                    <a href="https://t.me/like">LikeBot t.me link</a> (opens inside Telegram app)
+                </li>
+                <li>
+                    <a href="#" @click.prevent="openTelegramLink('https://t.me/vote');">openTelegramLink()</a> (opens
+                    inside Telegram app)
+                </li>
+                <li>
+                    <a href="#" @click.prevent=" openLink('https://google.com/'); ">openLink()</a> (opens outside
+                    webview)
+                </li>
+                <li>
+                    <a href="#" @click.prevent=" openLink('https://telegra.ph/api', { try_instant_view: true }); ">openLink({try_instant_view:true})</a>(opens
+                    IV inside Telegram app)
+                </li>
+                <li>
+                    <a href="#" @click.prevent=" switchInlineQuery('query'); ">switchInlineQuery('query')</a>(opens
+                    inline query inside Telegram app)
+                </li>
+            </ul>
+        </div>
 
-          <div>
-              <h4>Popups:</h4>
-              <ul>
-                  <li>
-                      <button  @click.prevent="showAlert('Hello!');">showAlert</button>
-                  </li>
-                  <li>
-                      <button @click.prevent="showConfirm('Are you sure?');">showConfirm</button>
-                  </li>
-                  <li>
-                      <button @click.prevent="showPopup({message: 'Hello!'});">showPopup</button>
-                  </li>
-<!--                  <li>-->
-<!--                      <a href="#" @click.prevent="showScanQrPopup({text: 'Test'})">showScanQrPopup</a>-->
-<!--                  </li>-->
-              </ul>
-          </div>
+        <div>
+            <h4>Popups:</h4>
+            <ul>
+                <li>
+                    <button @click.prevent="showAlert('Hello!');">showAlert</button>
+                </li>
+                <li>
+                    <button @click.prevent="showConfirm('Are you sure?');">showConfirm</button>
+                </li>
+                <li>
+                    <button @click.prevent="showPopup({message: 'Hello!'});">showPopup</button>
+                </li>
+                <li>
+                    <a href="#" @click.prevent="showScanQrPopup({text: 'Test'})">showScanQrPopup</a>
+                </li>
+            </ul>
+        </div>
 
-  <!--        <div>-->
-  <!--            <h4>Haptics:</h4>-->
-  <!--            <ul>-->
-  <!--                <li>Impact: <a href="#"-->
-  <!--                               @click.prevent="impactOccurred('heavy');"-->
-  <!--                >heavy</a>, &nbsp; <a-->
-  <!--                    href="#"-->
-  <!--                    @click.prevent="impactOccurred('light');"-->
-  <!--                >light</a>, &nbsp; <a-->
-  <!--                    href="#"-->
-  <!--                    @click.prevent="impactOccurred('medium');"-->
-  <!--                >medium</a>, &nbsp; <a-->
-  <!--                    href="#"-->
-  <!--                    @click.prevent="impactOccurred('rigid');"-->
-  <!--                >rigid</a>, &nbsp; <a-->
-  <!--                    href="#"-->
-  <!--                    @click.prevent="impactOccurred('soft');"-->
-  <!--                >soft</a><br><br>-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    Notification: <a-->
-  <!--                    href="#" @click.prevent="notificationOccurred('error');"-->
-  <!--                >error</a>,-->
-  <!--                    &nbsp; <a-->
-  <!--                    href="#" @click.prevent="notificationOccurred('success');"-->
-  <!--                >success</a>, &nbsp; <a-->
-  <!--                    href="#"-->
-  <!--                    @click.prevent="notificationOccurred('warning');"-->
-  <!--                >warning</a><br><br>-->
-  <!--                </li>-->
-  <!--                <li>-->
-  <!--                    Selection: <a-->
-  <!--                    href="#" @click.prevent="selectionChanged();"-->
-  <!--                >changed</a><br><br>-->
-  <!--                </li>-->
-  <!--            </ul>-->
-  <!--        </div>-->
+        <div>
+            <h4>Haptics:</h4>
+            <ul>
+                <li>Impact: <a href="#"
+                               @click.prevent="impactOccurred('heavy');"
+                >heavy</a>, &nbsp; <a
+                        href="#"
+                        @click.prevent="impactOccurred('light');"
+                >light</a>, &nbsp; <a
+                        href="#"
+                        @click.prevent="impactOccurred('medium');"
+                >medium</a>, &nbsp; <a
+                        href="#"
+                        @click.prevent="impactOccurred('rigid');"
+                >rigid</a>, &nbsp; <a
+                        href="#"
+                        @click.prevent="impactOccurred('soft');"
+                >soft</a><br><br>
+                </li>
+                <li>
+                    Notification: <a
+                        href="#" @click.prevent="notificationOccurred('error');"
+                >error</a>,
+                    &nbsp; <a
+                        href="#" @click.prevent="notificationOccurred('success');"
+                >success</a>, &nbsp; <a
+                        href="#"
+                        @click.prevent="notificationOccurred('warning');"
+                >warning</a><br><br>
+                </li>
+                <li>
+                    Selection: <a
+                        href="#" @click.prevent="selectionChanged();"
+                >changed</a><br><br>
+                </li>
+            </ul>
+        </div>
 
-<!--          <div>-->
-<!--              <h4>Data passed</h4>-->
-<!--              <h5>initData</h5>-->
-<!--              {{ initData }}-->
-<!--              <h5>initDataUnsafe</h5>-->
-<!--              {{ initDataUnsafe.user }}-->
-<!--          </div>-->
-<!--          <div>-->
-  <!--            <h4>Theme params</h4>-->
-  <!--            <div class="sect_row">-->
-  <!--                Color scheme: {{ colorScheme }}-->
-  <!--            </div>-->
-  <!--            <div class="sect_row">-->
-  <!--                Header:-->
-  <!--                <select >-->
-  <!--                    <option :selected="headerColor === themeParams.bg_color ">-->
-  <!--                        bg_color ({{ headerColor }})-->
-  <!--                    </option>-->
-  <!--                    <option :selected="headerColor === themeParams.secondary_bg_color ">-->
-  <!--                        secondary_bg_color ({{ headerColor }})-->
-  <!--                    </option>-->
-  <!--                </select>-->
-  <!--            </div>-->
-  <!--            <div class="sect_row">-->
-  <!--                Background:-->
-  <!--                <select >-->
-  <!--                    <option :selected="backgroundColor === themeParams.bg_color ">-->
-  <!--                        bg_color ({{ backgroundColor }})-->
-  <!--                    </option>-->
-  <!--                    <option :selected="backgroundColor === themeParams.secondary_bg_color ">-->
-  <!--                        secondary_bg_color ({{ backgroundColor }})-->
-  <!--                    </option>-->
-  <!--                </select>-->
-  <!--            </div>-->
+        <div>
+            <h4>Data passed</h4>
+            <h5>initData</h5>
+            {{ initData }}
+            <h5>initDataUnsafe</h5>
+            {{ initDataUnsafe.user }}
+        </div>
+        <div>
+            <h4>Theme params</h4>
+            <div class="sect_row">
+                Color scheme: {{ colorScheme }}
+            </div>
+            <div class="sect_row">
+                Header:
+                <select>
+                    <option :selected="headerColor === themeParams.bg_color ">
+                        bg_color ({{ headerColor }})
+                    </option>
+                    <option :selected="headerColor === themeParams.secondary_bg_color ">
+                        secondary_bg_color ({{ headerColor }})
+                    </option>
+                </select>
+            </div>
+            <div class="sect_row">
+                Background:
+                <select>
+                    <option :selected="backgroundColor === themeParams.bg_color ">
+                        bg_color ({{ backgroundColor }})
+                    </option>
+                    <option :selected="backgroundColor === themeParams.secondary_bg_color ">
+                        secondary_bg_color ({{ backgroundColor }})
+                    </option>
+                </select>
+            </div>
 
-  <!--            <pre><code>{{ themeParams }}</code></pre>-->
-  <!--        </div>-->
+            <pre><code>{{ themeParams }}</code></pre>
+        </div>
 
-  <!--        <div>-->
-  <!--            Version: {{ version }}-->
-  <!--            <br>-->
-  <!--            Platform: {{ platform }}-->
-  <!--        </div>-->
-  <!--    </section>-->
+        <div>
+            Version: {{ version }}
+            <br>
+            Platform: {{ platform }}
+        </div>
+    </section>
 </template>
 
 <script setup lang="ts">
@@ -324,7 +328,7 @@ const menu = ref([
     {name: 'Курсы'},
     {name: 'Реферал'},
     {name: 'Наши услуги'},
-    
+
 ])
 const changeStep = (step: StepType, fn = () => {
 }) => {
@@ -374,14 +378,14 @@ const nextStep = computed(() => {
     }
 })
 
-// const testIsVisible = ref(false)
-// const test = () => {
-//     testIsVisible.value = !testIsVisible.value
-// }
-const { version, platform, initData, initDataUnsafe, sendData } = useWebApp()
-// const { expand, isExpanded, viewportHeight, viewportStableHeight } = useWebAppViewport()
-// const { openLink, openTelegramLink, switchInlineQuery } = useWebAppNavigation()
-const { showConfirm, showAlert, showPopup } = useWebAppPopup()
+const testIsVisible = ref(false)
+const test = () => {
+    testIsVisible.value = !testIsVisible.value
+}
+const {version, platform, initData, initDataUnsafe, sendData} = useWebApp()
+const {expand, isExpanded, viewportHeight, viewportStableHeight} = useWebAppViewport()
+const {openLink, openTelegramLink, switchInlineQuery} = useWebAppNavigation()
+const {showConfirm, showAlert, showPopup} = useWebAppPopup()
 const {
     showMainButton,
     hideMainButton,
@@ -395,10 +399,10 @@ const {
     isMainButtonProgressVisible,
     setMainButtonParams,
 } = useWebAppMainButton()
-// const { colorScheme, themeParams, headerColor, backgroundColor } = useWebAppTheme()
-// const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
-// const { showScanQrPopup } = useWebAppQrScanner()
-//
+const {colorScheme, themeParams, headerColor, backgroundColor} = useWebAppTheme()
+const {impactOccurred, notificationOccurred, selectionChanged} = useWebAppHapticFeedback()
+const {showScanQrPopup} = useWebAppQrScanner()
+
 const toggleMainButton = () => {
     computedMainButtonVisible.value
         ? hideMainButton()
@@ -411,18 +415,18 @@ const computedMainButtonVisible = computed(() => {
         isMainButtonActive.value && currentStep.value === 'city' && !selectedCity.value ||
         currentStep.value === 'menu'
     ) {
-      return false
+        return false
     } else {
-      return true
+        return true
     }
-    
+
 })
 
-// function toggleMainButtonProgress() {
-//     isMainButtonProgressVisible.value
-//         ? hideMainButtonProgress()
-//         : showMainButtonProgress(true)
-// }
+function toggleMainButtonProgress() {
+    isMainButtonProgressVisible.value
+        ? hideMainButtonProgress()
+        : showMainButtonProgress(true)
+}
 </script>
 
 <style lang="scss">
@@ -438,25 +442,27 @@ button {
   grid-gap: 3px;
 
   &__item {
-      
-      text-align: center;
-    padding: 10px;
-      background: darkgray;
 
-      &:nth-child(7) {
-          grid-column: 1 / 3;
-      }
+    text-align: center;
+    padding: 10px;
+    background: darkgray;
+
+    &:nth-child(7) {
+      grid-column: 1 / 3;
+    }
   }
 }
+
 .menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3px;
-    button {
-        margin: 0;
-        border-radius: 4px;
-        height: 100%;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3px;
+
+  button {
+    margin: 0;
+    border-radius: 4px;
+    height: 100%;
+  }
 }
 </style>
 
