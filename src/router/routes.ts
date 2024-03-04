@@ -9,11 +9,11 @@ export default [
         name: 'city',
         component: () => import('../pages/CitySelection.vue'), 
     },
-    // {
-    //     path: '/menu',
-    //     name: 'menu',
-    //     component: () => import('../pages/Menu.vue'), 
-    // },
+    {
+        path: '/menu',
+        name: 'menu',
+        component: () => import('../pages/Menu.vue'), 
+    },
     //
 ]  // {
 //     path: '/',
