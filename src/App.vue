@@ -14,6 +14,43 @@ onMounted(() => {
     }
 })
 </script>
+<style lang="scss">
+button {
+  &.active {
+    background: linear-gradient(230deg, rgb(223 183 25) 0%, rgb(213 174 71) 15%);
+  }
+}
+
+.exchange-offers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3px;
+
+  &__item {
+
+    text-align: center;
+    padding: 10px;
+    background: darkgray;
+
+    &:nth-child(7) {
+      grid-column: 1 / 3;
+    }
+  }
+}
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 70px);
+  grid-gap: 3px;
+  button {
+    margin: 0;
+    border-radius: 4px;
+    height: 100%;
+    font-weight: bold;
+  }
+}
+
+</style>
 <!--<template>-->
 <!--  &lt;!&ndash;    <div>Выбранный язык: {{selectedLang}}</div>&ndash;&gt;-->
 <!--  &lt;!&ndash;    <div>Выбранный город: {{selectedCity}}</div>&ndash;&gt;-->

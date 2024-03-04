@@ -13,12 +13,25 @@
                 </button>
             </li>
         </ul>
-        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>
+        <button @click="pairDialog = true">Popup</button>
+        
+       
+<!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
             <button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</button>
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
+    <div class="popup-overlay" v-if="pairDialog">
+        <div class="popup" >
+            <button class="popup__close" @click="pairDialog = false">x</button>
+            <h1 style="color: black; text-align: center;">Title</h1>
+            <div style="width: 100%;">
+                <input type="number" v-model="pair" >
+            </div>
+            <button>Принять</button>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -40,6 +53,8 @@ onMounted(() => {
     // hideMainButton()
 })
 type StepType = 'lang' | 'city' | 'menu' | 'exchange' | undefined
+const pair = ref(null)
+const pairDialog = ref(false)
 const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
@@ -55,15 +70,15 @@ const cities = ref([
 
 ])
 const exchangeOffers = ref([
-    {name: 'USDT на AED', exchangeRate: 'до 3.674'},
-    {name: 'AED на USDT', exchangeRate: 'до 3.6668'},
-    {name: 'USDT на USD', exchangeRate: 'до 1'},
-    {name: 'USD на USDT', exchangeRate: 'до 1.012'},
-    {name: 'USD на AED', exchangeRate: 'до 3.643'},
-    {name: 'AED на USD', exchangeRate: 'до 3.672'},
-    {name: 'RUB(card) на AED', exchangeRate: 'до 28.878'},
-    {name: 'Менеджер-чеки', exchangeRate: null},
-    {name: 'Переводы', exchangeRate: null},
+    {name: 'USDT на AED', code: 'usdt_aed', exchangeRate: 'до 3.674'},
+    {name: 'AED на USDT', code: 'aed_usdt', exchangeRate: 'до 3.6668'},
+    {name: 'USDT на USD', code: 'usdt_usd', exchangeRate: 'до 1'},
+    {name: 'USD на USDT', code: 'usd_usdt', exchangeRate: 'до 1.012'},
+    {name: 'USD на AED', code: 'usd_aed', exchangeRate: 'до 3.643'},
+    {name: 'AED на USD', code: 'aed_usd', exchangeRate: 'до 3.672'},
+    {name: 'RUB(card) на AED', code: 'rub_card', exchangeRate: 'до 28.878'},
+    {name: 'Менеджер-чеки', code: 'check', exchangeRate: null},
+    {name: 'Переводы', code: 'transfer', exchangeRate: null},
 ])
 const menu = ref([
     {name: 'Обменять валюты'},
@@ -172,37 +187,6 @@ const computedMainButtonVisible = computed(() => {
 </script>
 
 <style lang="scss">
-button {
-  &.active {
-    background: linear-gradient(230deg, rgb(223 183 25) 0%, rgb(213 174 71) 15%);
-  }
-}
 
-.exchange-offers {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 3px;
-
-  &__item {
-      
-      text-align: center;
-    padding: 10px;
-      background: darkgray;
-
-      &:nth-child(7) {
-          grid-column: 1 / 3;
-      }
-  }
-}
-.menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3px;
-    button {
-        margin: 0;
-        border-radius: 4px;
-        height: 100%;
-    }
-}
 </style>
 

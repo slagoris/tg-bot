@@ -13,7 +13,7 @@
           </ul>
           <ul class="exchange-offers">
               <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
-                  @click.prevent="showAlert(`${offer.name} ${offer.exchangeRate}`);"
+                  @click.prevent="router.push(`/exchange`);"
               >
                   {{ offer.name }} {{ offer.exchangeRate }}
               </li>

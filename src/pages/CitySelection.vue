@@ -2,10 +2,10 @@
         <section class="page">
             <button @click="router.back()">НАЗАД</button>
             <tg-back-button @click="router.back()"/>
-            <div style="width: 100%; margin-bottom: 30px;">
-                <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"
-                     style="margin-bottom: 30px; height: 100%; max-height: 100px">
-            </div>
+<!--            <div style="width: 100%; margin-bottom: 30px;">-->
+<!--                <img src="/public/images/Logo7Gates-gold.svg" alt="logo 7gg"-->
+<!--                     style="margin-bottom: 30px; height: 100%; max-height: 100px">-->
+<!--            </div>-->
             <h1>Выберите город</h1>
             <ul>
                 <li v-for="(city, index) in cities" :key="city.code">

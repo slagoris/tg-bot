@@ -19,6 +19,11 @@ export const useGeneralStore = defineStore('generalStore', () => {
         return currentCity
     }
     
+    const exchangePair = ref()
+    const setExchangePair = (pair: any) => {
+        exchangePair.value = pair
+    }
+    
     return {
         currentLang,
         setLang,
@@ -26,6 +31,9 @@ export const useGeneralStore = defineStore('generalStore', () => {
 
         currentCity,
         getCity,
-        setCity
+        setCity,
+
+        exchangePair,
+        setExchangePair
     }
 })
