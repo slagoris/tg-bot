@@ -171,7 +171,7 @@
                     IV inside Telegram app)
                 </li>
                 <li>
-                    <a href="#" @click.prevent=" switchInlineQuery('query'); ">switchInlineQuery('query')</a>(opens
+                    <button @click.prevent=" switchInlineQuery('https://maps.app.goo.gl/uoCLXuJergofMePdA'); ">switchInlineQuery('query')</button>(opens
                     inline query inside Telegram app)
                 </li>
             </ul>
