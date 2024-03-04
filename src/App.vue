@@ -1,12 +1,10 @@
 <template>
   <router-view />
-  {{useGeneralStore()}}
 </template>
 <script setup lang="ts">
 
 import {onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
-import {useGeneralStore} from "./stores/general.ts";
 const route = useRoute()
 const router = useRouter()
 
