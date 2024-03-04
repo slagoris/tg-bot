@@ -1,19 +1,18 @@
 <template>
-  Приложение
-<!--  <router-view />-->
+  <router-view />
 </template>
 <script setup lang="ts">
 
 import {onMounted} from "vue";
-// import {useRoute, useRouter} from "vue-router";
-// const route = useRoute()
-// const router = useRouter()
+import {useRoute, useRouter} from "vue-router";
+const route = useRoute()
+const router = useRouter()
 
-// onMounted(() => {
-//     if (route.path === '/') {
-//         router.push('/')
-//     }
-// })
+onMounted(() => {
+    if (route.path === '/') {
+        router.push('/')
+    }
+})
 </script>
 <!--<template>-->
 <!--  &lt;!&ndash;    <div>Выбранный язык: {{selectedLang}}</div>&ndash;&gt;-->
