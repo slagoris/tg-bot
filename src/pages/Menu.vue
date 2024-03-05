@@ -104,8 +104,7 @@ const finishExchange = (data) => {
     exchangeDialog.value = false
     notificationOccurred('success')
     showAlert('Успешно, ваша заявка принята. Отправили вам детали обмена.')
-    switchInlineQuery('пасибо. Заявка принята.\n' +
-        '\n' +
+    switchInlineQuery('Спасибо. Заявка принята.\n + '\n' +
         'Наш адрес:\n' +
         'ONEX Платежные решения\n' +
         '+79778785688\n' +
