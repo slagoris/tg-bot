@@ -8,7 +8,7 @@
             <div> 🥇От 15,001$ и выше -  93.687 RUB</div>
         </div>
         
-        <Dropdown v-model="pair" placeholder="Выберите пару для обмена" :options="exchangeOffers" option-label="name"/>
+        <Dropdown v-model="pair" placeholder="Выберите пару для обмена" :options="exchangeOffers" option-label="name" @change="selectionChanged()" />
         <Dropdown v-if="pair" v-model="way" placeholder="Выберите способ" :options="pair.cur" @change="selectionChanged()">
             <template #option="{option}">
                 Ввести сумму {{ option }}
@@ -22,9 +22,9 @@
                 </span>
             </template>
         </Dropdown>
-        <InputText v-if="way" v-model="sum" type="number" min="100" step="100"  :placeholder="`Сумма ${way}`"/>
+        <InputText v-if="way" v-model="sum" type="number" min="100" step="100"  :placeholder="`Сумма ${way}`" @input="impactOccurred('soft')"/>
         <div v-if="way === 'USDT' && sum > 0 && walletIsVisible">
-            <InputText v-model="wallet" placeholder="Введите адрес вашего USDT-кошелька" style="width: 100%;"/>
+            <InputText v-model="wallet" placeholder="Введите адрес вашего USDT-кошелька" style="width: 100%;" @input="impactOccurred('soft')"/>
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false"/>
         </div>
         <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;"/>
