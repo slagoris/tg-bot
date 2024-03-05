@@ -103,6 +103,6 @@ const finishExchange = (data) => {
     sendData(JSON.stringify(data))
     exchangeDialog.value = false
     notificationOccurred('success')
-    showAlert('Успешно, ваша заявка принята. Отправили вам детали')
+    showAlert('Успешно, ваша заявка принята. Отправили вам детали обмена.')
 }
 </script>
