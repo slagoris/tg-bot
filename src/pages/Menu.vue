@@ -11,7 +11,7 @@
               <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
               <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
           </ul>
-          <ul class="exchange-offers">
+          <ul class="exchange-offers" :class="{ odd: exchangeOffers.length % 2 !== 0 }">
               <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
                   @click="exchangeDialog = true; impactOccurred('medium')"
               >
@@ -19,9 +19,14 @@
               </li>
           </ul>
           <ul class="menu">
-              <li class="menu__item" v-for="item in menu">
-                  <Button @click.prevent="showAlert(`${item.name}`);">{{item.name}}</Button>
+              <li class="menu__item">
+                  <Button @click="exchangeDialog = true; impactOccurred('medium')">Обменять валюты</Button>
               </li>
+              <li><Button>История услуг</Button></li>
+              <li><Button>Связаться с менеджером</Button></li>
+              <li><Button>Курсы</Button></li>
+              <li><Button>Курсы</Button></li>
+              <li><Button>Наши услуги</Button></li>
           </ul>
       </section>
     <Dialog v-model:visible="exchangeDialog" modal :draggable="false" header="Обмен валют" :style="{width: '100%', height: '100%'}">
@@ -31,25 +36,58 @@
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useWebApp, useWebAppHapticFeedback, useWebAppPopup} from "../composables";
 import ExchangeModal from "../components/modal/ExchangeModal.vue";
+import {useGeneralStore} from "../stores/general.ts";
 const { version, platform, initData, initDataUnsafe, sendData } = useWebApp()
 const { showConfirm, showAlert, showPopup } = useWebAppPopup()
 const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 const router = useRouter();
 const exchangeDialog = ref(false)
-const exchangeOffers = ref([
-    {name: 'USDT на AED', exchangeRate: 'до 3.674'},
-    {name: 'AED на USDT', exchangeRate: 'до 3.6668'},
-    {name: 'USDT на USD', exchangeRate: 'до 1'},
-    {name: 'USD на USDT', exchangeRate: 'до 1.012'},
-    {name: 'USD на AED', exchangeRate: 'до 3.643'},
-    {name: 'AED на USD', exchangeRate: 'до 3.672'},
-    {name: 'RUB(card) на AED', exchangeRate: 'до 28.878'},
-    {name: 'Менеджер-чеки', exchangeRate: null},
-    {name: 'Переводы', exchangeRate: null},
-])
+const exchangeOffers = computed(() => {
+    if(useGeneralStore().currentCity.code === 'dubai'){
+        return [
+            {name: 'USDT на AED', exchangeRate: 'до 3.674'},
+            {name: 'AED на USDT', exchangeRate: 'до 3.6668'},
+            {name: 'USDT на USD', exchangeRate: 'до 1'},
+            {name: 'USD на USDT', exchangeRate: 'до 1.012'},
+            {name: 'USD на AED', exchangeRate: 'до 3.643'},
+            {name: 'AED на USD', exchangeRate: 'до 3.672'},
+            {name: 'RUB(card) на AED', exchangeRate: 'до 28.878'},
+            {name: 'Менеджер-чеки', exchangeRate: null},
+            {name: 'Переводы', exchangeRate: null},
+        ]
+    }
+    if(useGeneralStore().currentCity.code === 'moscow'){
+        return [
+            {name: 'RUB на USDT', exchangeRate: 'до 3.674'},
+            {name: 'USDT на RUB', exchangeRate: 'до 3.6668'},
+            {name: 'USD на USDT', exchangeRate: 'до 1.012'},
+            {name: 'USDT на USD', exchangeRate: 'до 1'},
+            {name: 'USDT на RUB(card)', exchangeRate: 'до 28.878'},
+            {name: 'RUB(card) на USDT', exchangeRate: 'до 28.878'},
+            {name: 'EUR на USDT', exchangeRate: 'до 1.012'},
+            {name: 'USDT на EUR', exchangeRate: 'до 1'},
+            {name: 'USD на AED', exchangeRate: 'до 3.643'},
+            {name: 'AED на USD', exchangeRate: 'до 3.672'},
+            {name: 'RUB на AED', exchangeRate: 'до 28.878'},
+            {name: 'Менеджер-чеки', exchangeRate: null},
+            {name: 'Переводы', exchangeRate: null},
+        ]
+    }
+    if(useGeneralStore().currentCity.code !== ('moscow' || 'dubai')){
+        return [
+            {name: 'RUB на USDT', exchangeRate: 'до 3.674'},
+            {name: 'USDT на RUB', exchangeRate: 'до 3.6668'},
+            {name: 'USDT на RUB(card)', exchangeRate: 'до 28.878'},
+            {name: 'RUB(card) на USDT', exchangeRate: 'до 28.878'},
+            {name: 'Менеджер-чеки', exchangeRate: null},
+            {name: 'Переводы', exchangeRate: null},
+        ]
+    }
+})
+
 const menu = ref([
     {name: 'Обменять валюты'},
     {name: 'История услуг'},

@@ -32,8 +32,13 @@ button {
     padding: 10px;
     background: darkgray;
 
-    &:nth-child(7) {
-      grid-column: 1 / 3;
+    
+  }
+  &.odd {
+    .exchange-offers__item {
+      &:nth-last-child(3) {
+        grid-column: 1 / 3;
+      }
     }
   }
 }

@@ -97,7 +97,7 @@ const changeStep = (step: StepType, fn = () => {
 }
 const setLang = (lang) => {
     useGeneralStore().setLang(lang)
-    setMainButtonParams({text: lang.name})
+    setMainButtonParams({text:`${lang.name} →  Далее`})
     showMainButton()
 }
 
