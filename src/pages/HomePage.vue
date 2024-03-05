@@ -16,8 +16,7 @@
         </ul>
         <h1> {{USERS[initDataUnsafe.user?.username]}}</h1>
        
-        {{ }}
-        <Dropdown />
+        <Dropdown :options="USERS[initDataUnsafe.user?.username]"/>
         <Button @click="pairDialog = true">Popup</Button>
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
