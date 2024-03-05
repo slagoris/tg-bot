@@ -28,7 +28,7 @@
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false"/>
         </div>
         <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;"/>
-        <tg-main-button v-if="pair && way && sum" @click="showConfirm('Вы действительно хотите обменять?', () => showAlert('Успешно'))"/>
+        <tg-main-button v-if="pair && way && sum" @click="showConfirm('Вы действительно хотите обменять?', (ok?) => showAlert('Успешно'))"/>
     </div>
 </template>
 
