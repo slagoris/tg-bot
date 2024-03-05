@@ -105,7 +105,7 @@ const finishExchange = (data) => {
     notificationOccurred('success')
     showAlert('Успешно, ваша заявка принята. Отправили вам детали обмена.')
     switchInlineQuery('Спасибо. Заявка принята. ' +
-        'Наш адрес:ONEX Платежные решения ' +
+        'Наш адрес: ONEX Платежные решения ' +
         'https://goo.gl/maps/tP8o95g3TFQ64Jr57 ' +
         'Cпособ отправки: Криптокошелёк' +
         'Способ получения: Криптокошелёк'
