@@ -26,9 +26,9 @@
         <div v-if="way === 'USDT' && sum > 0 && walletIsVisible">
             <InputText v-model="wallet" placeholder="Введите адрес вашего USDT-кошелька" style="width: 100%;" @input="impactOccurred('soft')"/>
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false"/>
-        </div>
+<!--        </div>showAlert('Успешно')-->
         <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;"/>
-        <tg-main-button v-if="pair && way && sum" @click="showConfirm('Вы действительно хотите обменять?', (ok: boolean) => () => ok && showAlert('Успешно'))"/>
+        <tg-main-button v-if="pair && way && sum" @click="showConfirm('Вы действительно хотите обменять?', (ok: boolean) => ok ? showAlert('Успешно') : null)"/>
     </div>
 </template>
 
