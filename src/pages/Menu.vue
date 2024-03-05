@@ -13,7 +13,7 @@
           </ul>
           <ul class="exchange-offers">
               <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
-                  @click.prevent="router.push(`/exchange`);"
+                  @click="exchangeDialog = true; impactOccurred('medium')"
               >
                   {{ offer.name }} {{ offer.exchangeRate }}
               </li>
@@ -24,16 +24,21 @@
               </li>
           </ul>
       </section>
+    <Dialog v-model:visible="exchangeDialog" modal :draggable="false" header="Обмен валют" :style="{width: '100%', height: '100%'}">
+        <ExchangeModal />
+    </Dialog>
 </template>
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
 import {ref} from "vue";
-import {useWebApp, useWebAppPopup} from "../composables";
+import {useWebApp, useWebAppHapticFeedback, useWebAppPopup} from "../composables";
+import ExchangeModal from "../components/modal/ExchangeModal.vue";
 const { version, platform, initData, initDataUnsafe, sendData } = useWebApp()
 const { showConfirm, showAlert, showPopup } = useWebAppPopup()
+const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 const router = useRouter();
-
+const exchangeDialog = ref(false)
 const exchangeOffers = ref([
     {name: 'USDT на AED', exchangeRate: 'до 3.674'},
     {name: 'AED на USDT', exchangeRate: 'до 3.6668'},

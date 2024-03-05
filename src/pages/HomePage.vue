@@ -15,18 +15,14 @@
             </li>
         </ul>
        
-        <Button @click="pairDialog = true">Popup</Button>
+       
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
             <Button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</Button>
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
-    <Dialog v-model:visible="pairDialog" modal :draggable="false" header="TITLE" :style="{width: '100%', height: '100%'}">
-        
-        <ExchangeModal />
-        
-    </Dialog>
+   
 <!--    <div class="popup-overlay" v-if="pairDialog">-->
 <!--        <div class="popup" >-->
 <!--            <button class="popup__close" @click="pairDialog = false">x</button>-->
@@ -60,7 +56,7 @@ onMounted(() => {
 })
 type StepType = 'lang' | 'city' | 'menu' | 'exchange' | undefined
 const pair = ref(null)
-const pairDialog = ref(false)
+const exchangeDialog = ref(false)
 const currentStep = ref<StepType>('lang')
 const selectedLang = ref()
 const selectedCity = ref()
