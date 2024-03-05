@@ -38,7 +38,7 @@ const {
     setMainButtonParams,
 } = useWebAppMainButton()
 onMounted(() => {
-    setMainButtonParams({text: useGeneralStore().currentCity?.name || ''})
+    setMainButtonParams({text: `${useGeneralStore().currentCity?.name} →  Далее` || ''})
 })
 const router = useRouter()
 const selectedCity = ref()

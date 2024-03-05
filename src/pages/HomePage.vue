@@ -14,8 +14,6 @@
                 </Button>
             </li>
         </ul>
-       
-       
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
             <Button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</Button>
@@ -52,7 +50,7 @@ import {useGeneralStore} from "../stores/general.ts";
 import ExchangeModal from "../components/modal/ExchangeModal.vue";
 const  router = useRouter()
 onMounted(() => {
-   setMainButtonParams({text: useGeneralStore().currentLang?.name || ''})
+   setMainButtonParams({text: `${useGeneralStore().currentLang?.name} →  Далее` || ''})
 })
 type StepType = 'lang' | 'city' | 'menu' | 'exchange' | undefined
 const pair = ref(null)

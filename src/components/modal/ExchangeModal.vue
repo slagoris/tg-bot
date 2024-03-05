@@ -50,7 +50,7 @@ const {
     setMainButtonParams,
 } = useWebAppMainButton()
 onMounted(() => {
-    setMainButtonParams({text: 'Обменять'})
+    setMainButtonParams({text: 'Обменять' || ''})
 })
 const pair = ref()
 const way = ref()
