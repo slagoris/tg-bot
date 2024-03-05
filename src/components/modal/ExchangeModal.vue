@@ -29,10 +29,11 @@
         </div>
 <!--        <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;" @click="finishExchange()"/>-->
         <tg-main-button v-if="pair && way && sum" @click="showConfirm(`
-        Вы действительно хотите обменять? ${sum} ${way}
-         по курсу ${pair.exchangeRate}. 
+        Вы действительно хотите обменять: ${sum} ${way}
+         По курсу: ${pair.exchangeRate}. 
          Вы отдаете ХХХ, 
          Вы получаете XXXX,
+         
          После создания заявки курс фиксируется на 1 час(-а)`, (ok: boolean) => ok ? finishExchange() : null)"/>
     </div>
 </template>
