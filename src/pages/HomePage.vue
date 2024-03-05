@@ -14,9 +14,7 @@
                 </Button>
             </li>
         </ul>
-        <h1> {{USERS[initDataUnsafe.user?.username]}}</h1>
        
-        <Dropdown :options="USERS[initDataUnsafe.user?.username]"/>
         <Button @click="pairDialog = true">Popup</Button>
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
@@ -42,7 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import {USERS} from "../enums/usersEnum.ts";
 import {
     useWebApp,
     useWebAppHapticFeedback,
