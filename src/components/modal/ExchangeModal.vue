@@ -28,7 +28,12 @@
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false; wallet = ''"/>
         </div>
 <!--        <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;" @click="finishExchange()"/>-->
-        <tg-main-button v-if="pair && way && sum" @click="showConfirm(`Вы действительно хотите обменять? ${sum} ${way} по курсу ${pair.exchangeRate}`, (ok: boolean) => ok ? finishExchange() : null)"/>
+        <tg-main-button v-if="pair && way && sum" @click="showConfirm(`
+        Вы действительно хотите обменять? ${sum} ${way}
+         по курсу ${pair.exchangeRate}. 
+         Вы отдаете ХХХ, 
+         Вы получаете XXXX,
+         После создания заявки курс фиксируется на 1 час(-а)`, (ok: boolean) => ok ? finishExchange() : null)"/>
     </div>
 </template>
 
