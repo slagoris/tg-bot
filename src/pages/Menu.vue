@@ -91,7 +91,8 @@ const exchangeOffers = computed(() => {
 const backStep = () => {
   if (exchangeDialog.value) {
     exchangeDialog.value = false
-  }
-  router.back()
+  } else {
+      router.back()
+  } 
 }
 </script>
