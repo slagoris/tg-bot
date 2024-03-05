@@ -1,6 +1,6 @@
 <template>
       <section>
-          <Button @click="router.back()">НАЗАД</Button>
+          <Button @click="backStep">НАЗАД</Button>
           <tg-back-button @click="router.back()" v-if="!exchangeDialog"/>
           <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
               <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">
@@ -88,13 +88,10 @@ const exchangeOffers = computed(() => {
     }
 })
 
-const menu = ref([
-    {name: 'Обменять валюты'},
-    {name: 'История услуг'},
-    {name: 'Связаться с менеджером'},
-    {name: 'Курсы'},
-    {name: 'Реферал'},
-    {name: 'Наши услуги'},
-
-])
+const backStep = () => {
+  if (exchangeDialog.value) {
+    exchangeDialog.value = false
+  }
+  router.back()
+}
 </script>
