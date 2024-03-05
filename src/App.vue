@@ -25,7 +25,9 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 3px;
-
+  button {
+    height: 100%;
+  }
   &__item {
     text-align: center;
   }
