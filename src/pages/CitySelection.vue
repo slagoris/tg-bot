@@ -1,6 +1,5 @@
 <template>
         <section class="page">
-            {{useGeneralStore().currentCity?.code}}
             <Button @click="router.back()">НАЗАД</Button>
             <tg-back-button @click="router.back()"/>
             <h1>Выберите город</h1>
@@ -16,7 +15,7 @@
                 <h1>Выберите Ваш город из списка</h1>
                 <ul style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 5px">
                     <li v-for="city in citiesRussian" :key="city.code">
-                        <Button @click="setCity(city)" :class="{active: useGeneralStore().currentCity?.code === city.code}">{{ city.name }}</Button>
+                        <Button @click="setCity(city)" :class="{active: useGeneralStore().currentCity?.code === city.code}" >{{ city.name }}</Button>
                     </li>
                 </ul>
             </div>
@@ -62,7 +61,7 @@ const citiesRussian = ref([
     {name: 'Екатеринбург', code: 'ekb'},
     {name: 'Казань', code: 'kazan'},
     {name: 'Краснодар', code: 'krasnodar'},
-    {name: 'Набережные Челны', code: 'chelny'},
+    {name: 'Н. Челны', code: 'chelny'},
     {name: 'Новосибирск', code: 'novosibirsk'},
     {name: 'Самара', code: 'samara'},
     {name: 'Санкт-Петербург', code: 'spb'},
