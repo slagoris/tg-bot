@@ -1,6 +1,6 @@
 <template>
       <section>
-          <Button @click="backStep">НАЗАД</Button>
+<!--          <Button @click="backStep">НАЗАД</Button>-->
           <tg-back-button @click="backStep"/>
           <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
               <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">
@@ -13,9 +13,12 @@
           </ul>
           <ul class="exchange-offers" :class="{ odd: exchangeOffers.length % 2 !== 0 }">
               <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
-                  @click="exchangeDialog = true; impactOccurred('medium')"
+                 
               >
-                  {{ offer.name }} {{ offer.exchangeRate }}
+                  <Button  severity="secondary"  @click="exchangeDialog = true; impactOccurred('heavy')">
+                      {{ offer.name }} {{ offer.exchangeRate }}
+                  </Button>
+                 
               </li>
           </ul>
           <ul class="menu">

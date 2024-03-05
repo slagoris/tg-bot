@@ -27,12 +27,7 @@ button {
   grid-gap: 3px;
 
   &__item {
-
     text-align: center;
-    padding: 10px;
-    background: darkgray;
-
-    
   }
   &.odd {
     .exchange-offers__item {

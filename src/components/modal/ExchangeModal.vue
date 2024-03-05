@@ -28,14 +28,15 @@
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false"/>
         </div>
         <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;"/>
-        <tg-main-button v-if="pair && way && sum"/>
+        <tg-main-button v-if="pair && way && sum" @click="showConfirm('Вы действительно хотите обменять?', () => showAlert('Успешно'))"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {useWebAppHapticFeedback, useWebAppMainButton} from "../../composables";
+import {useWebAppHapticFeedback, useWebAppMainButton, useWebAppPopup} from "../../composables";
 const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
+const { showConfirm, showAlert, showPopup } = useWebAppPopup()
 const {
     showMainButton,
     hideMainButton,
@@ -49,6 +50,7 @@ const {
     isMainButtonProgressVisible,
     setMainButtonParams,
 } = useWebAppMainButton()
+
 onMounted(() => {
     setMainButtonParams({text: 'Обменять' || ''})
 })

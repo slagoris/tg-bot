@@ -355,3 +355,6 @@ small {
     max-height: 100%;
     border-radius: 0;
 }
+.p-button {
+    justify-content: center;
+}
