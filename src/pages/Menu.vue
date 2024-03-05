@@ -1,7 +1,7 @@
 <template>
       <section>
           <Button @click="backStep">НАЗАД</Button>
-          <tg-back-button @click="router.back()" v-if="!exchangeDialog"/>
+          <tg-back-button @click="backStep" v-if="!exchangeDialog"/>
           <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
               <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">
           </div>
