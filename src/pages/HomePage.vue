@@ -52,7 +52,7 @@ import {useGeneralStore} from "../stores/general.ts";
 import ExchangeModal from "../components/modal/ExchangeModal.vue";
 const  router = useRouter()
 onMounted(() => {
-    // hideMainButton()
+   setMainButtonParams({text: useGeneralStore().currentLang?.name || ''})
 })
 type StepType = 'lang' | 'city' | 'menu' | 'exchange' | undefined
 const pair = ref(null)

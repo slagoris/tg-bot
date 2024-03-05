@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import {useWebAppMainButton} from "../composables";
 import {useGeneralStore} from "../stores/general.ts";
 const {
@@ -37,6 +37,9 @@ const {
     isMainButtonProgressVisible,
     setMainButtonParams,
 } = useWebAppMainButton()
+onMounted(() => {
+    setMainButtonParams({text: useGeneralStore().currentCity?.name || ''})
+})
 const router = useRouter()
 const selectedCity = ref()
 const cities = ref([

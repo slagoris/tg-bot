@@ -33,9 +33,25 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
-import {useWebAppHapticFeedback} from "../../composables";
+import {onMounted, ref} from "vue";
+import {useWebAppHapticFeedback, useWebAppMainButton} from "../../composables";
 const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
+const {
+    showMainButton,
+    hideMainButton,
+    showMainButtonProgress,
+    hideMainButtonProgress,
+    mainButtonText,
+    mainButtonColor,
+    mainButtonTextColor,
+    isMainButtonActive,
+    isMainButtonVisible,
+    isMainButtonProgressVisible,
+    setMainButtonParams,
+} = useWebAppMainButton()
+onMounted(() => {
+    setMainButtonParams({text: 'Обменять'})
+})
 const pair = ref()
 const way = ref()
 const sum = ref(null)
