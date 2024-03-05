@@ -21,8 +21,10 @@
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
-    <Dialog v-model:visible="pairDialog" modal :draggable="false" header="TITLE">
-        <InputText v-model="pair" />
+    <Dialog v-model:visible="pairDialog" modal :draggable="false" header="TITLE" :style="{width: '100%', height: '100%'}">
+        
+        <ExchangeModal />
+        
     </Dialog>
 <!--    <div class="popup-overlay" v-if="pairDialog">-->
 <!--        <div class="popup" >-->
@@ -50,6 +52,7 @@ import {
 import {computed, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {useGeneralStore} from "../stores/general.ts";
+import ExchangeModal from "../components/modal/ExchangeModal.vue";
 const  router = useRouter()
 onMounted(() => {
     // hideMainButton()
