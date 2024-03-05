@@ -8,7 +8,7 @@
         <ul>
             <li v-for="(lang, index) in langs" :key="lang.code">
                 
-                <Button @click="setLang(lang)" :class="{active: useGeneralStore().currentLang?.code === lang.code}">
+                <Button @click="setLang(lang); impactOccurred('heavy')" :class="{active: useGeneralStore().currentLang?.code === lang.code}">
                     <span v-text="lang?.name"/>
                     <span v-text="lang?.flag" style="margin-left: 10px;"/>
                 </Button>
@@ -162,7 +162,7 @@ const {
     setMainButtonParams,
 } = useWebAppMainButton()
 // const { colorScheme, themeParams, headerColor, backgroundColor } = useWebAppTheme()
-// const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
+const { impactOccurred, notificationOccurred, selectionChanged } = useWebAppHapticFeedback()
 // const { showScanQrPopup } = useWebAppQrScanner()
 //
 const toggleMainButton = () => {
