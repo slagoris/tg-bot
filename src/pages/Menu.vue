@@ -112,7 +112,7 @@ const finishExchange = (data) => {
     }).then(function (result) {
         // onCallback && onCallback(result);
     }).catch(function (error) {
-        console.log(error)
+        // console.log(error)
     });
     exchangeDialog.value = false
     notificationOccurred('success')
