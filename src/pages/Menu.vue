@@ -103,10 +103,7 @@ const finishExchange = (data) => {
     sendData(JSON.stringify(data))
     fetch('https://test-bot-888.invi.pw/api/70013d3c-f63c-4e1d-8255-1895707e7980', {
         method     : 'POST',
-        body       : JSON.stringify(Object.assign(data, {
-            // _auth : authData,
-            // method: method,
-        })),
+        body       : JSON.stringify(data),
         credentials: 'include',
         headers    : {
             'Content-Type': 'application/json'
