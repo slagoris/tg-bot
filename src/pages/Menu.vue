@@ -101,14 +101,31 @@ const backStep = () => {
 }
 const finishExchange = (data) => {
     sendData(JSON.stringify(data))
+    fetch('https://test-bot-888.invi.pw/api/70013d3c-f63c-4e1d-8255-1895707e7980', {
+        method     : 'POST',
+        body       : JSON.stringify(Object.assign(data, {
+            // _auth : authData,
+            // method: method,
+        })),
+        credentials: 'include',
+        headers    : {
+            'Content-Type': 'application/json'
+        }
+    }).then(function (response) {
+        return response.json();
+    }).then(function (result) {
+        // onCallback && onCallback(result);
+    }).catch(function (error) {
+        // onCallback && onCallback({error: 'Server error'});
+    });
     exchangeDialog.value = false
     notificationOccurred('success')
     showAlert('Успешно, ваша заявка принята. Отправили вам детали обмена.')
-    switchInlineQuery('Спасибо. Заявка принята. ' +
-        'Наш адрес: ONEX Платежные решения ' +
-        'https://goo.gl/maps/tP8o95g3TFQ64Jr57 ' +
-        'Cпособ отправки: Криптокошелёк' +
-        'Способ получения: Криптокошелёк'
-       )
+    // switchInlineQuery('Спасибо. Заявка принята. ' +
+    //     'Наш адрес: ONEX Платежные решения ' +
+    //     'https://goo.gl/maps/tP8o95g3TFQ64Jr57 ' +
+    //     'Cпособ отправки: Криптокошелёк' +
+    //     'Способ получения: Криптокошелёк'
+    //    )
 }
 </script>

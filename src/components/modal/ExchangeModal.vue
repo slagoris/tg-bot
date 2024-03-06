@@ -27,7 +27,7 @@
             <InputText v-model="wallet" placeholder="Введите адрес вашего USDT-кошелька" style="width: 100%;" @input="impactOccurred('soft')"/>
             <Button label="Пропустить ввод кошелька"  @click="walletIsVisible = false; wallet = ''"/>
         </div>
-<!--        <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;" @click="finishExchange()"/>-->
+        <Button :disabled="!pair || !way || !sum" label="Подтвердить" style="margin-top: 30px;" @click="finishExchange()"/>
         <tg-main-button v-if="pair && way && sum" @click="showConfirm(`
         Вы действительно хотите обменять: ${sum} ${way}
          По курсу: ${pair.exchangeRate}. 

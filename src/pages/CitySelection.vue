@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div v-if="useGeneralStore().currentCity && useGeneralStore().currentCity?.code !== 'other'">
-<!--                <Button @click="router.push('/menu')">{{useGeneralStore().currentCity?.name}} > Далее</Button>-->
+                <Button @click="router.push('/menu')">{{useGeneralStore().currentCity?.name}} > Далее</Button>
                 <tg-main-button @click="router.push('/menu')" />
             </div>
         </section>

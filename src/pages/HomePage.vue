@@ -14,9 +14,10 @@
                 </Button>
             </li>
         </ul>
+        
 <!--        <button @click="toggleMainButton">ТОГЛ ГЛАВНОЙ КНОПКИ</button>-->
         <div v-if="useGeneralStore().currentLang">
-<!--            <Button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</Button>-->
+            <Button @click="router.push('/city')">{{useGeneralStore().currentLang.name}} > Далее</Button>
             <tg-main-button @click="router.push('/city')" />
         </div>
     </section>
