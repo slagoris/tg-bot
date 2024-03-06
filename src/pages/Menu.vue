@@ -100,7 +100,7 @@ const backStep = () => {
   } 
 }
 const finishExchange = (data) => {
-    // sendData(JSON.stringify(data))
+    sendData('Еще раз просто текст')
     // console.log(data)
     fetch('https://test-bot-888.invi.pw/api/70013d3c-f63c-4e1d-8255-1895707e7980', {
         method     : 'POST',
@@ -112,7 +112,7 @@ const finishExchange = (data) => {
     }).then(function (result) {
         // onCallback && onCallback(result);
     }).catch(function (error) {
-        // console.log(error)
+        console.log(error)
     });
     exchangeDialog.value = false
     notificationOccurred('success')
