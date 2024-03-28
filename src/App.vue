@@ -1,10 +1,12 @@
 <template>
+  <the-header />
   <router-view />
 </template>
 <script setup lang="ts">
 
 import {onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import TheHeader from "./components/TheHeader.vue";
 const route = useRoute()
 const router = useRouter()
 

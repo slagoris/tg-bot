@@ -2,7 +2,6 @@
         <section class="page">
 <!--            <Button @click="router.back()">НАЗАД</Button>-->
             <tg-back-button @click="router.back()"/>
-            <h1>Выберите город</h1>
             <ul>
                 <li v-for="city in cities" :key="city.code">
                     <Button @click="setCity(city)" 

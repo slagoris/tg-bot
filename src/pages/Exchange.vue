@@ -1,9 +1,6 @@
 <template>
       <section>
           <tg-back-button @click="router.back()"/>
-          <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
-              <img src="/public/images/exchange-ru.jpg" alt="exchange 7gg" width="100%">
-          </div>
           <ul class="exchange-offers">
               <li class="exchange-offers__item" v-for="offer in exchangeOffers" @click="router.push(`/exchange`)">
                   {{ offer.name }} {{ offer.exchangeRate }}
@@ -15,9 +12,6 @@
               </li>
           </ul>
       </section>
-<!--    <Dialog v-model:visible="exchangeDialog" modal :draggable="false" header="Обмен валют" :style="{width: '100%', height: '100%'}">-->
-<!--        <ExchangeModal />-->
-<!--    </Dialog>-->
 </template>
 
 <script setup lang="ts">

@@ -2,35 +2,24 @@
       <section>
 <!--          <Button @click="backStep">НАЗАД</Button>-->
           <tg-back-button @click="backStep"/>
-          <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
-              <img src="/public/images/greet-ru.jpg" alt="menu 7gg" width="100%">
-          </div>
-          <h1> <span>@{{ initDataUnsafe.user?.username }}, </span>Добро пожаловать в 7GG 🤝</h1>
-          <ul>
-              <li>💠 Первый в мире обменный пункт, который делится прибылью со своими клиентами💰</li>
-              <li>💠 Самые выгодные курсы на покупку/продажу валюты, криптовалюты, менеджер-чеков</li>
-              <li>💠 Быстрый, безопасный обмен USDT, RUB, AED, USD в офисах компании или с доставкой</li>
-          </ul>
+<!--          <h1> <span>@{{ initDataUnsafe.user?.username }}, </span>Добро пожаловать в 7GG 🤝</h1>-->
           <ul class="exchange-offers" :class="{ odd: exchangeOffers.length % 2 !== 0 }">
-              <li class="exchange-offers__item" v-for="offer in exchangeOffers" 
-                 
-              >
+              <li class="exchange-offers__item" v-for="offer in exchangeOffers">
                   <Button  severity="secondary"  @click="exchangeDialog = true; impactOccurred('heavy')">
                       {{ offer.name }} до {{ offer.exchangeRate }}
                   </Button>
-                 
               </li>
           </ul>
-          <ul class="menu">
-              <li class="menu__item">
-                  <Button @click="exchangeDialog = true; impactOccurred('medium')">Обменять валюты</Button>
-              </li>
-              <li><Button>История услуг</Button></li>
-              <li><Button>Связаться с менеджером</Button></li>
-              <li><Button>Курсы</Button></li>
-              <li><Button>Курсы</Button></li>
-              <li><Button>Наши услуги</Button></li>
-          </ul>
+<!--          <ul class="menu">-->
+<!--              <li class="menu__item">-->
+<!--                  <Button @click="exchangeDialog = true; impactOccurred('medium')">Обменять валюты</Button>-->
+<!--              </li>-->
+<!--              <li><Button>История услуг</Button></li>-->
+<!--              <li><Button>Связаться с менеджером</Button></li>-->
+<!--              <li><Button>Курсы</Button></li>-->
+<!--              <li><Button>Курсы</Button></li>-->
+<!--              <li><Button>Наши услуги</Button></li>-->
+<!--          </ul>-->
       </section>
     <Dialog v-model:visible="exchangeDialog" modal :draggable="false" header="Обмен валют" :style="{width: '100%', height: '100%'}">
         <ExchangeModal @close="finishExchange"/>

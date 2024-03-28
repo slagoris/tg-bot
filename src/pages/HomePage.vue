@@ -1,10 +1,5 @@
 <template>
     <section>
-        <div style="width: 100%; margin-bottom: 30px; max-height: 568px">
-            <img src="/public/images/lang-ru.jpg" alt="logo 7gg" width="100%">
-        </div>
-       
-        <h1>Выберите язык</h1>
         <ul>
             <li v-for="(lang, index) in langs" :key="lang.code">
                 
